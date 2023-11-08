@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信号发生器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .content {
+            text-align: left;
+            margin: 0px;
+            width: 30%; /* 设置宽度为父元素宽度的90%（可根据需要调整） */
+            /*max-width: 100%; !* 设置最大宽度为100% *!*/
+            /*max-width: 600px; !* 设置最大宽度为800像素，根据需要调整 *!*/
+            /*width: 100%; !* 使其适应其父元素的宽度 *!*/
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+
+        }
+                /* Add styles for the container */
+        .container {
+            background-color: #fff; /* Set background color to white */
+            border: 1px solid #ccc; /* Add a border with a light gray color */
+            border-radius: 10px; /* Round the corners */
+            padding: 20px; /* Add some padding inside the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            text-align: left; /* Center the content */
+            max-width: 400px; /* Limit the maximum width */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        /* Style the buttons inside the container */
+        .container button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style the input fields inside the container */
+        .container input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #000; /* 修改边框颜色为蓝色 */
+            background-color: #fff; /* 修改背景颜色为白色 */
+            width: 30%; /* 修改宽度 */
+            margin-bottom: 10px;
+            color: #333; /* 修改文本颜色 */
+        }
+
+                /* 绿色的样式类 */
+        .success {
+            color: green;
+        }
+
+        /* 红色的样式类 */
+        .error {
+            color: red;
+        }
+
+                /* 修改所有按钮样式为白底黑字 */
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #fff; /* 修改按钮背景颜色为白色 */
+            color: #000; /* 修改按钮文本颜色为黑色 */
+            border: 2px solid #000; /* 添加黑色边框 */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+
+        /* 鼠标悬停时的样式 */
+        input[type="submit"]:hover {
+            background-color: #000; /* 修改悬停时的背景颜色为黑色 */
+            color: #fff; /* 修改悬停时的文本颜色为白色 */
+        }
+        /* Style the buttons inside the container */
+        .container button.button-style {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 鼠标悬停时的样式 */
+        .container button.button-style:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px; /* 添加这一行，设置英文字体大小为16像素 */
+        }
+
+        .strong-input {
+            font-weight: bold;
+          }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        iframe {
+            margin-left: 0px; /* 增加水平间距，10px 或根据需要调整 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>信号发生器控制</h1>
+    </header>
+    <div class="container-wrapper">
+        <div class="content">
+            <div class="container">
+                <p><strong>连接信号发生器：</strong></p>
+                <form onsubmit="return connect()">
+                    <label for="VISA"><strong>VISA</strong>:</label>
+                    <input type="text" id="VISA" name="VISA" value="USB0::0x0699::0x0353::2310317::INSTR">
+                    <input type="submit" value="连接" class="strong-input">
+                    <span id="connectionStatus" class="success"></span>
+                </form>
+                <p><strong>通道设置：</strong></p>
+                <form onsubmit="return setChannelSettings()">
+                    <label for="channel1">通道 1：</label>
+                    <input type="checkbox" id="channel1" name="channel1" checked> <!-- 使用 checked 属性来初始化选中状态 -->
+                    <label for="channel2">通道 2：</label>
+                    <input type="checkbox" id="channel2" name="channel2"> <!-- 使用 checked 属性来初始化选中状态 -->
+                    <br>
+                </form>
+                <p id="channelSettingsResult"></p>
+                <p><strong>设置频率和波特率：</strong></p>
+                <form onsubmit="return setVoltageAndCurrent()">
+                    <label for="pl">频率:</label>
+                    <input type="text" id="pl" name="pl" value="100KHz">
+                    <br>
+                    <label for="bote">波特率:</label>
+                    <input type="text" id="bote" name="bote" value="50%"><br>
+                    <input type="submit" value="确定">
+                </form>
+                <p id="setbotepl"></p>
+            </div>
+        </div>
+    </div>
+    <!-- Additional content or elements can be added here -->
+    <script>
+        function connect() {
+            const visa = document.getElementById('VISA').value;
+            fetch(`/tek/connect?visa=${visa}`)
+            .then(response => response.json())
+            .then(data => {
+                const resultElement = document.getElementById('connectionStatus');
+                if (data.result === 'Connection Successful') {
+                    resultElement.innerHTML = '&#10004;'; // 使用 "✓" 符号
+                    resultElement.className = 'success';
+                } else {
+                    resultElement.innerHTML = '&#10008;'; // 使用 "X" 符号
+                    resultElement.className = 'error';
+                }
+            });
+            return false;
+        }
+
+        function setVoltageAndCurrent() {
+            // Retrieve voltage and current values from input fields
+            const pl = document.getElementById('pl').value;
+            const bote = document.getElementById('bote').value;
+            const channel1 = document.getElementById('channel1').checked;
+            const channel2 = document.getElementById('channel2').checked;
+            const visa = document.getElementById('VISA').value;
+
+            // 构建发送数据对象
+            const sendData = {
+                pl: pl,
+                bote: bote,
+                channel1: channel1,
+                channel2: channel2,
+                visa: visa,
+            };
+
+            fetch('/tek/setbotepl', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(sendData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'Connection Successful') {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = `频率设置为${pl}，波特率设置为${bote}`;
+                } else {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = "请重新连接";
+                }
+            });
+            // Prevent the form from submitting and refreshing the page
+            return false;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>创建项目</title>
+    <style>
+        /* styles.css */
+
+        /* Style the header */
+        h1 {
+            color: #333;
+        }
+
+        /* Style the form */
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 10%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style the project list */
+        ul#project-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul#project-list li {
+            margin-bottom: 10px;
+        }
+
+        /* Style the uploaded files list */
+        ul.list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.list-group li {
+            margin-bottom: 5px;
+        }
+
+        a#filename {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .content {
+            text-align: left;
+            width: 70%;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+
+        /* Hide the file input element */
+        input[type="file"] {
+            display: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>测试用例管理</h1>
+    </header>
+    <div class="container-wrapper">
+        <div class="content">
+            <div class="container">
+                <h1>创建项目</h1>
+                <link rel="stylesheet" type="text/css" href="styles.css">
+                <form id="create-project-form">
+                    <label for="project_name">项目名称：</label>
+                    <input type="text" id="project_name" name="project_name" required>
+                    <button type="submit" onclick="createProject(event)">创建</button>
+                </form>
+                <hr>
+                <h2>已创建的项目：</h2>
+                <ul id="project-list">
+                    <!-- 这里将在JavaScript中动态生成项目链接 -->
+                </ul>
+
+                <p><strong>已上传文件：</strong></p>
+                <ul class="list-group">
+                    {% for file in uploaded_files %}
+                    {% if file.endswith('.csv') %}
+                    <li class="list-group-item">
+                        <a href="/testcase/view/{{ file }}" id="filename">{{ file }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Add a click event listener to the "创建" button for better feedback
+        const createButton = document.querySelector('button');
+        createButton.addEventListener('click', createProject);
+
+        // Enhance the showAlert function with a more user-friendly alert
+        function showAlert(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert';
+            alertDiv.textContent = message;
+            document.body.appendChild(alertDiv);
+
+            // Automatically remove the alert after 3 seconds
+            setTimeout(function () {
+                alertDiv.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+
+    <script>
+        // 使用JavaScript异步获取文件夹列表
+        fetch('/get_project_list')
+            .then(response => response.json())
+            .then(data => {
+                const projectList = document.getElementById('project-list');
+                data.projects.forEach(project => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `/project/${project}`;
+                    link.textContent = project;
+                    listItem.appendChild(link);
+                    projectList.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching project list:', error);
+            });
+
+        // 弹窗提示信息
+        function showAlert(message) {
+            alert(message);
+        }
+
+        // 阻止表单的默认提交行为，使用 JavaScript 来处理创建项目
+        function createProject(event) {
+            event.preventDefault(); // 阻止表单默认提交
+            const projectNameInput = document.getElementById('project_name');
+            const projectName = projectNameInput.value;
+            // 发送项目创建请求，根据您的后端接口来实现
+            fetch('/create_project', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `project_name=${projectName}`,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 弹出提示消息
+                showAlert(data.message);
+                // 清空输入框
+                projectNameInput.value = '';
+                // 刷新当前页面
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error creating project:', error);
+            });
+        }
+    </script>
+</body>
+</html>

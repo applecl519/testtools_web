@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电池负载控制</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .content {
+            text-align: left;
+            margin: 0px;
+            width: 30%; /* 设置宽度为父元素宽度的90%（可根据需要调整） */
+            /*max-width: 100%; !* 设置最大宽度为100% *!*/
+            /*max-width: 600px; !* 设置最大宽度为800像素，根据需要调整 *!*/
+            /*width: 100%; !* 使其适应其父元素的宽度 *!*/
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+
+        }
+                /* Add styles for the container */
+        .container {
+            background-color: #fff; /* Set background color to white */
+            border: 1px solid #ccc; /* Add a border with a light gray color */
+            border-radius: 10px; /* Round the corners */
+            padding: 20px; /* Add some padding inside the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            text-align: left; /* Center the content */
+            max-width: 400px; /* Limit the maximum width */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        /* Style the buttons inside the container */
+        .container button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style the input fields inside the container */
+        .container input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #000; /* 修改边框颜色为蓝色 */
+            background-color: #fff; /* 修改背景颜色为白色 */
+            width: 30%; /* 修改宽度 */
+            margin-bottom: 10px;
+            color: #333; /* 修改文本颜色 */
+        }
+
+                /* 绿色的样式类 */
+        .success {
+            color: green;
+        }
+
+        /* 红色的样式类 */
+        .error {
+            color: red;
+        }
+
+                /* 修改所有按钮样式为白底黑字 */
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #fff; /* 修改按钮背景颜色为白色 */
+            color: #000; /* 修改按钮文本颜色为黑色 */
+            border: 2px solid #000; /* 添加黑色边框 */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+
+        /* 鼠标悬停时的样式 */
+        input[type="submit"]:hover {
+            background-color: #000; /* 修改悬停时的背景颜色为黑色 */
+            color: #fff; /* 修改悬停时的文本颜色为白色 */
+        }
+        /* Style the buttons inside the container */
+        .container button.button-style {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 鼠标悬停时的样式 */
+        .container button.button-style:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px; /* 添加这一行，设置英文字体大小为16像素 */
+        }
+
+        .strong-input {
+            font-weight: bold;
+          }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        iframe {
+            margin-left: 0px; /* 增加水平间距，10px 或根据需要调整 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>电池负载控制</h1>
+    </header>
+    <div class="container-wrapper">
+        <div class="content">
+            <div class="container">
+                <p><strong>连接电池负载：</strong></p>
+                <form onsubmit="return connect()">
+                    <label for="VISA"><strong>VISA</strong>:</label>
+                    <input type="text" id="VISA" name="VISA" value="USB0::0x2EC7::0x8800::800837011767650010::INSTR">
+                    <input type="submit" value="连接" class="strong-input">
+                    <span id="connectionStatus" class="success"></span>
+                </form>
+                <p><strong>ON/OFF按钮：</strong></p>
+                <button class="button-style" onclick="powerOn()">开启</button>
+                <button class="button-style" onclick="powerOff()">关闭</button>
+
+                <p><strong>本地操控：</strong></p>
+                <button class="button-style" onclick="changelocal()">本地</button>
+<!--?                <button class="button-style" onclick="changermt()">远程</button>-->
+
+
+                <p><strong>查询当前电流电压值：</strong></p>
+                <button class="button-style" onclick="getScreenVA()">查询当前电流电压值</button>
+                <p id="getTimeScaleResult"></p>
+
+                <p><strong>设置电压：</strong></p>
+                <form onsubmit="return setVoltage()">
+                    <label for="voltage">电压(V):</label>
+                    <input type="text" id="voltage" name="voltage">
+                    <input type="submit" value="确定">
+                </form>
+                <p id="setVoltageResult"></p>
+
+                <p><strong>设置电流：</strong></p>
+                <form onsubmit="return setCurrent()">
+                    <label for="current">电流(A):</label>
+                    <input type="text" id="current" name="current">
+                    <input type="submit" value="确定">
+                </form>
+                <p id="setCurrentResult"></p>
+
+                <p><strong>设置电阻：</strong></p>
+                <form onsubmit="return setResistance()">
+                    <label for="resistance">电阻(Ω):</label>
+                    <input type="text" id="resistance" name="resistance">
+                    <input type="submit" value="确定">
+                </form>
+                <p id="setResistanceResult"></p>
+            </div>
+        </div>
+    </div>
+    <!-- Additional content or elements can be added here -->
+    <script>
+        function connect() {
+            const visa = document.getElementById('VISA').value;
+            fetch(`/dianchifuzai/connect?visa=${visa}`)
+            .then(response => response.json())
+            .then(data => {
+                const resultElement = document.getElementById('connectionStatus');
+                if (data.result === 'Connection Successful') {
+                    resultElement.innerHTML = '&#10004;'; // 使用 "✓" 符号
+                    resultElement.className = 'success';
+                } else {
+                    resultElement.innerHTML = '&#10008;'; // 使用 "X" 符号
+                    resultElement.className = 'error';
+                }
+            });
+            return false;
+        }
+        function powerOn() {
+            fetch(`/dianchifuzai/power_on`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'Connection Successful') {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = "电源已开启";
+                } else {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = "请重新连接";
+                }
+            });
+            return false;
+        }
+
+       function powerOff() {
+            fetch(`/dianchifuzai/power_off`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'Connection Successful') {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = "电源已关闭";
+                } else {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = "请重新连接";
+                }
+            });
+            return false;
+        }
+
+        function changelocal() {
+            fetch(`/dianchifuzai/changelocal`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'Connection Successful') {
+                            document.getElementById('setVoltageCurrentResult').innerHTML = "远程操作关闭";
+                        } else {
+                            document.getElementById('setVoltageCurrentResult').innerHTML = "远程操作启动";
+                        }
+                    });
+            return false;
+        }
+
+        function getScreenVA() {
+            fetch('/dianchifuzai/Screen')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('getTimeScaleResult').innerHTML = data.result;
+                    });
+        }
+
+        function setVoltage() {
+            // Retrieve voltage and current values from input fields
+            const voltage = document.getElementById('voltage').value;
+            fetch('/dianchifuzai/setVoltage', {
+                method: 'POST',
+                body: new URLSearchParams({voltage: voltage}),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'Connection Successful') {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = `电压设置为${voltage}V`;
+                } else {
+                    document.getElementById('setVoltageCurrentResult').innerHTML = "请重新连接";
+                }
+            });
+            // Prevent the form from submitting and refreshing the page
+            return false;
+        }
+
+        function setCurrent() {
+            // Retrieve voltage and current values from input fields
+            const current = document.getElementById('current').value;
+            fetch('/dianchifuzai/setCurrent', {
+                method: 'POST',
+                body: new URLSearchParams({current: current}),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'Connection Successful') {
+                            document.getElementById('setVoltageCurrentResult').innerHTML = `电流设置为${current}A`;
+                        } else {
+                            document.getElementById('setVoltageCurrentResult').innerHTML = "请重新连接";
+                        }
+                    });
+            // Prevent the form from submitting and refreshing the page
+            return false;
+        }
+
+        function setResistance() {
+            // Retrieve voltage and current values from input fields
+            const resistance = document.getElementById('resistance').value;
+            fetch('/dianchifuzai/setResistance', {
+                method: 'POST',
+                body: new URLSearchParams({resistance: resistance}),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'Connection Successful') {
+                            document.getElementById('setVoltageCurrentResult').innerHTML = `电流设置为${resistance}Ω`;
+                        } else {
+                            document.getElementById('setVoltageCurrentResult').innerHTML = "请重新连接";
+                        }
+                    });
+            // Prevent the form from submitting and refreshing the page
+            return false;
+        }
+    </script>
+</body>
+</html>

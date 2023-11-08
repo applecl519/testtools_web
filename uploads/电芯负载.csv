@@ -1,0 +1,112 @@
+编号,测试用例名称,前置条件,测试步骤,url,method,data,是否运行,后置条件,期望结果（future）,返回结果
+1,通道1电压500000,,1.连接信号发生器,/tek/connect,GET,?visa=USB0::0x0699::0x0353::2310317::INSTR,否,,,
+,,,2.设置波特率和频率,/tek/setbotepl,POST,"{
+    ""pl"": ""100KHZ"",
+    ""bote"": ""40%"",
+    ""channel1"": true,
+    ""channel2"": false,
+    ""visa"": ""USB0::0x0699::0x0353::2310317::INSTR""
+}",否,,,
+,,,3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 5000000'"",
+    ""mastr"": ""ON/CV""
+}",否,,,
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,否,,,
+,,,5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,否,,,
+2,通道1电压400000,,1.连接信号发生器,/tek/connect,GET,?visa=USB0::0x0699::0x0353::2310317::INSTR,否,,,
+,,,2.设置波特率和频率,/tek/setbotepl,POST,"{
+    ""pl"": ""200KHZ"",
+    ""bote"": ""50%"",
+    ""channel1"": true,
+    ""channel2"": false,
+    ""visa"": ""USB0::0x0699::0x0353::2310317::INSTR""
+}",否,,,
+,,,3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 4000000'"",
+    ""mastr"": ""ON/CV""
+}",否,,,
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,否,,,
+,,,5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,否,,,
+3,通道1电压400000,,1.连接信号发生器,/tek/connect,GET,?visa=USB0::0x0699::0x0353::2310317::INSTR,否,,,
+,,,2.设置波特率和频率,/tek/setbotepl,POST,"{
+    ""pl"": ""200KHZ"",
+    ""bote"": ""50%"",
+    ""channel1"": true,
+    ""channel2"": false,
+    ""visa"": ""USB0::0x0699::0x0353::2310317::INSTR""
+}",否,,,
+,,,3.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""5"",
+    ""can_id"": ""202"",
+    ""bit0"": ""2"",
+    ""bit1"": ""2"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": true
+}",否,,,
+,,,4.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""101"",
+    ""bit0"": ""1"",
+    ""bit1"": ""1"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false
+}",否,"sleep(2)
+print('测试等一等')",,
+,,,5.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,否,,,
+,,,6.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,否,,,
+4,通道1电压400000,,1.连接信号发生器,/tek/connect,GET,?visa=USB0::0x0699::0x0353::2310317::INSTR,是,,,{'result': 'Connection Successful'}
+,,,2.设置波特率和频率,/tek/setbotepl,POST,"{
+    ""pl"": ""200KHZ"",
+    ""bote"": ""50%"",
+    ""channel1"": true,
+    ""channel2"": false,
+    ""visa"": ""USB0::0x0699::0x0353::2310317::INSTR""
+}",是,,,{'result': 'Connection Successful'}
+,,,3.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""5"",
+    ""can_id"": ""202"",
+    ""bit0"": ""2"",
+    ""bit1"": ""2"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": true
+}",否,,,{'result': ['总线无消息']}
+,,,4.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""101"",
+    ""bit0"": ""1"",
+    ""bit1"": ""1"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false
+}",否,"sleep(2)
+print('测试等一等')",,{'result': 'send Successful'}
+,,,5.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,,6.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '0.22461 VDC\r\n'}
+,,,7连接示波器,/oscilloscope/connect,GET,/192.168.90.101,是,,,{'result': 'Connection Successful'}
+,,,8读取示波器频率,/oscilloscope/get_measurement,GET,?pos=1,是,,,{'result': '3999.61471000'}
+,,,9读取示波器占空比,/oscilloscope/get_measurement,GET,?pos=2,是,,,{'result': '3.33300000'}

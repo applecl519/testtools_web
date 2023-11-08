@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相关工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .content {
+            text-align: left;
+            margin: 0px;
+            width: 30%; /* 设置宽度为父元素宽度的90%（可根据需要调整） */
+            /*max-width: 100%; !* 设置最大宽度为100% *!*/
+            /*max-width: 600px; !* 设置最大宽度为800像素，根据需要调整 *!*/
+            /*width: 100%; !* 使其适应其父元素的宽度 *!*/
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 40px;
+
+        }
+                /* Add styles for the container */
+        .container {
+            background-color: #fff; /* Set background color to white */
+            border: 1px solid #ccc; /* Add a border with a light gray color */
+            border-radius: 10px; /* Round the corners */
+            padding: 20px; /* Add some padding inside the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            text-align: left; /* Center the content */
+            width: 2000px;
+            max-width: 2000px; /* Limit the maximum width */
+            margin: 0 auto; /* Center the container horizontally */
+            /*display: ;*/
+            /*justify-content: space-between;*/
+        }
+
+        /* Style the buttons inside the container */
+        .container button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style the input fields inside the container */
+        .container input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #000; /* 修改边框颜色为蓝色 */
+            background-color: #fff; /* 修改背景颜色为白色 */
+            width: 40px; /* 修改宽度 */
+            margin-bottom: 10px;
+            color: #333; /* 修改文本颜色 */
+        }
+
+
+                /* 修改所有按钮样式为白底黑字 */
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #fff; /* 修改按钮背景颜色为白色 */
+            color: #000; /* 修改按钮文本颜色为黑色 */
+            border: 2px solid #000; /* 添加黑色边框 */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+
+        /* 鼠标悬停时的样式 */
+        input[type="submit"]:hover {
+            background-color: #000; /* 修改悬停时的背景颜色为黑色 */
+            color: #fff; /* 修改悬停时的文本颜色为白色 */
+        }
+        /* Style the buttons inside the container */
+        .container button.button-style {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 鼠标悬停时的样式 */
+        .container button.button-style:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .button-style {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Hover effect for the "接收" button */
+        .button-style:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px; /* 添加这一行，设置英文字体大小为16像素 */
+        }
+
+        .strong-input {
+            font-weight: bold;
+          }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        iframe {
+            margin-left: 0px; /* 增加水平间距，10px 或根据需要调整 */
+        }
+
+        nav {
+            text-align: left;
+            margin-top: 0px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 修改复选框的大小 */
+        input[type="checkbox"] {
+            width: 20px; /* 设置宽度 */
+            height: 20px; /* 设置高度 */
+            font-size: 16px; /* 设置字体大小 */
+        }
+        /* Style for the "停止循环" button */
+        .stop-loop-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Hover effect for the "停止循环" button */
+        .stop-loop-button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .log-container {
+          background-color: #f7f7f7;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 10px;
+          margin-top: 20px;
+          max-height: 300px;
+          overflow-y: scroll;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .log-title {
+          font-size: 20px;
+          text-align: left;
+          margin: 10px;
+        }
+
+        .log-messages {
+          padding: 10px;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          max-height: 200px;
+          overflow-y: scroll;
+        }
+
+        .log-messages p {
+          margin: 0;
+          padding: 5px;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .log-messages p:last-child {
+          border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>相关工具</h1>
+    </header>
+    <div class="message type" >
+        <nav>
+        <p><strong>调用vcardas发送和接收消息：</strong></p>
+        <a href="#" onclick="showCanContent()">CAN</a>
+        <a href="#" onclick="showLinContent()">LIN</a>
+        <a href="#" onclick="showFlaxrayContent()">FR</a>
+        </nav>
+    </div>
+    <div class="container-wrapper">
+        <!-- Links to toggle content -->
+        <!-- Move the content div here -->
+            <div id="canContent" style="display: none;">
+                <div class="container">
+                    <p><strong>发送和接收CAN消息：</strong></p>
+                    <form id="canForm" onsubmit="return sendCanMessage()">
+                        <label for="channel">Channel:</label>
+                        <input type="text" id="channel" name="channel" value="1" required><br>
+                        <label for="can_id">CAN ID:</label>
+                        <input type="text" id="can_id" name="can_id" value="0" required><br>
+
+                        <label>BYTE(0-7):</label>
+                        <input type="text" id="bit0" name="bit0" value="0" required>
+                        <input type="text" id="bit1" name="bit1" value="0" required>
+                        <input type="text" id="bit2" name="bit2" value="0" required>
+                        <input type="text" id="bit3" name="bit3" value="0" required>
+                        <input type="text" id="bit4" name="bit4" value="0" required>
+                        <input type="text" id="bit5" name="bit5" value="0" required>
+                        <input type="text" id="bit6" name="bit6" value="0" required>
+                        <input type="text" id="bit7" name="bit7" value="0" required><br>
+
+
+                        <label for="isLoop">循环发送：</label>
+                        <input type="checkbox" id="isLoop" name="isLoop">
+                        <button type="button" id="stopLoopButton" class="button-style" onclick="stopLoop()">停止循环</button><br>
+                        <input type="submit" value="发送">
+                        <input type="button" value="接收" onclick="receiveData()" class="button-style">
+                    </form>
+                    <p id="sendCanMessageResult"></p>
+                </div>
+                <div class="container">
+                  <h2 class="log-title">CAN消息日志</h2>
+                  <div class="log-messages" id="logMessages"></div>
+                </div>
+            <div id="linContent" style="display: none;"> <!-- Initially hidden -->
+                <!-- LIN content goes here -->
+            </div>
+
+            <div id="flaxrayContent" style="display: none;"> <!-- Initially hidden -->
+                <!-- Flaxray content goes here -->
+            </div>
+        </div>
+        <div class="message type">
+            <nav>
+                <p><strong>CAN控计算器：</strong></p>
+                <a href="{{ url_for('download_exe_calculator') }}" class="button" download>CAN控计算器</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Additional content or elements can be added here -->
+
+    <script>
+        function showCanContent() {
+            // 隐藏导航栏
+            document.querySelector("nav").style.display = "none";
+
+            // 显示Can内容
+            document.getElementById("canContent").style.display = "block";
+            document.getElementById("linContent").style.display = "none";
+            document.getElementById("flaxrayContent").style.display = "none";
+        }
+
+        function showLinContent() {
+            document.getElementById("canContent").style.display = "none";
+            document.getElementById("linContent").style.display = "block";
+            document.getElementById("flaxrayContent").style.display = "none";
+        }
+
+        function showFlaxrayContent() {
+            document.getElementById("canContent").style.display = "none";
+            document.getElementById("linContent").style.display = "none";
+            document.getElementById("flaxrayContent").style.display = "block";
+        }
+
+        function stopLoop() {
+            // 向后端发送请求以停止循环
+            fetch('/vcardas/stop_loop', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'Loop Stopped') {
+                    // 显示停止循环成功的消息或执行其他操作
+                    alert('循环已停止');
+                } else {
+                    // 处理停止循环失败的情况
+                    alert('停止循环失败');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function sendCanMessage() {
+            // 获取表单元素的值
+            const channel = document.getElementById("channel").value;
+            const can_id = document.getElementById("can_id").value;
+            const bit0 = document.getElementById("bit0").value;
+            const bit1 = document.getElementById("bit1").value;
+            const bit2 = document.getElementById("bit2").value;
+            const bit3 = document.getElementById("bit3").value;
+            const bit4 = document.getElementById("bit4").value;
+            const bit5 = document.getElementById("bit5").value;
+            const bit6 = document.getElementById("bit6").value;
+            const bit7 = document.getElementById("bit7").value;
+            const isLoop = document.getElementById("isLoop").checked;
+
+            // 构建发送数据对象
+            const sendData = {
+                channel: channel,
+                can_id: can_id,
+                bit0: bit0,
+                bit1: bit1,
+                bit2: bit2,
+                bit3: bit3,
+                bit4: bit4,
+                bit5: bit5,
+                bit6: bit6,
+                bit7: bit7,
+                isLoop: isLoop
+            };
+
+            // 发送数据到后端
+            fetch('/vcardas/sent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(sendData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 处理后端响应
+                document.getElementById("sendCanMessageResult").textContent = data.result;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("sendCanMessageResult").textContent = '发送失败';
+            });
+
+            // 防止表单提交导致页面刷新
+            return false;
+        }
+
+        // Function to handle receiving data
+        function receiveData() {
+            const channel = document.getElementById("channel").value;
+            const can_id = document.getElementById("can_id").value;
+            const bit0 = document.getElementById("bit0").value;
+            const bit1 = document.getElementById("bit1").value;
+            const bit2 = document.getElementById("bit2").value;
+            const bit3 = document.getElementById("bit3").value;
+            const bit4 = document.getElementById("bit4").value;
+            const bit5 = document.getElementById("bit5").value;
+            const bit6 = document.getElementById("bit6").value;
+            const bit7 = document.getElementById("bit7").value;
+            const isLoop = document.getElementById("isLoop").checked;
+
+            // 构建发送数据对象
+            const sendData = {
+                channel: channel,
+                can_id: can_id,
+                bit0: bit0,
+                bit1: bit1,
+                bit2: bit2,
+                bit3: bit3,
+                bit4: bit4,
+                bit5: bit5,
+                bit6: bit6,
+                bit7: bit7,
+                isLoop: isLoop
+            };
+
+            fetch('/vcardas/recv', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(sendData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Display the received data in the log-messages console
+                    const logMessages = document.getElementById("logMessages");
+                    const message = document.createElement("p");
+                    message.textContent = data.result;
+                    logMessages.appendChild(message);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+
+    </script>
+
+</body>
+</html>

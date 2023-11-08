@@ -1,0 +1,325 @@
+编号,测试用例名称,前置条件,测试步骤,url,method,data,是否运行,后置条件,期望结果（future）,返回结果
+1,"通道2：101
+通道1：101
+link up",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 1 1 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+2,"通道2：101
+通道1：001
+link up",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 1 0 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+3,"通道2：001
+通道1：001
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 1 0 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+4,"通道2：101
+通道1：100
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 1 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+5,"通道2：001
+通道1：100
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 1 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+6,"通道2：100
+通道1：100
+link up",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 1 0 0 0 0 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+7,"通道2：101
+通道1：000
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 0 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+8,"通道2：001
+通道1：000
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 0 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+9,"通道2：100
+通道1：000
+link up",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 0 0 0 0 0 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+10,"通道2：000
+通道1：000
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 0 0 0 0 0 0 0 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+11,"通道2：101
+通道1：011
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 0 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+12,"通道2：001
+通道1: 011
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 0 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+13,"通道2：100
+通道1: 011
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 0 0 0 0 0 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+14,"通道2：000
+通道1: 011
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 0 0 0 0 0 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+15,"通道2：011
+通道1: 011
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 0 0 0 0 1 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+16,"通道2：101
+通道1: 111
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 1 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+17,"通道2：001
+通道1: 111
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 1 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+18,"通道2：100
+通道1: 111
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 1 0 0 0 0 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:full,Tx_Link:up,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+19,"通道2：000
+通道1: 111
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 1 0 0 0 0 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+20,"通道2：011
+通道1: 111
+link up",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 1 0 0 0 1 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+21,"通道2：111
+通道1: 111
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 1 1 0 0 0 1 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+22,"通道2：101
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+23,"通道2：001
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+24,"通道2：100
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 0 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+25,"通道2：000
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 0 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+26,"通道2：011
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 1 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:full,Tx_Link:up,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+27,"通道2：111
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 1 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+28,"通道2：010
+通道1: 010
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 0 0 0 0 1 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+29,"通道2：101
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 0 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+30,"通道2：001
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 0 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+31,"通道2：100
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 0 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+32,"通道2：000
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 0 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+33,"通道2：011
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 1 1 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+34,"通道2：111
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 1 1 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+35,"通道2：010
+通道1: 110
+link up",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 1 0 0 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:full,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"
+36,"通道2：110
+通道1: 110
+link down",sleep(6),1.发送ethercat消息,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect ckype.exp 1 0 1 0 0 0 1 0 1 0 0 0'"",
+    ""mastr"": ""T1_Link""
+}",是,,,"{'result': 'ch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:full,Tx_Link:up,Tx_Speed:100M\nch1:T1_State:master,T1_Link:up,T1_Speed:1000M,Tx_State:half,Tx_Link:down,Tx_Speed:100M\nch2:T1_State:slave,T1_Link:down,T1_Speed:100M,Tx_State:half,Tx_Link:up,Tx_Speed:100M'}"

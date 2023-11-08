@@ -1,0 +1,937 @@
+编号,测试用例名称,前置条件,测试步骤,url,method,data,是否运行,后置条件,期望结果（future）,返回结果
+1,"通道2：000
+通道1：000
+link up",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""33"",
+    ""bit3"": ""0"",
+    ""bit4"": ""3B"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""6"",
+    ""bit1"": ""12"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xd3', '0xd2', '0x7', '0xf1', '0xb5', '0x0']}"
+2,"通道2：101
+通道1：001
+link up",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""23"",
+    ""bit3"": ""0"",
+    ""bit4"": ""2B"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xe3', '0xd2', '0x7', '0xf1', '0xc5', '0x0']}"
+3,"通道2：001
+通道1：001
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""3"",
+    ""bit3"": ""0"",
+    ""bit4"": ""B"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x23', '0xd2', '0x7', '0xf1', '0x5', '0x0']}"
+4,"通道2：101
+通道1：100
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""32"",
+    ""bit3"": ""0"",
+    ""bit4"": ""3A"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x13', '0xd2', '0x7', '0xf1', '0xf5', '0x0']}"
+5,"通道2：001
+通道1：100
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""12"",
+    ""bit3"": ""0"",
+    ""bit4"": ""1A"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x13', '0xd2', '0x7', '0xf1', '0xf5', '0x0']}"
+6,"通道2：100
+通道1：100
+link up",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""30"",
+    ""bit3"": ""0"",
+    ""bit4"": ""38"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xe0', '0xd2', '0x7', '0xf1', '0xc2', '0x0']}"
+7,"通道2：101
+通道1：000
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""22"",
+    ""bit3"": ""0"",
+    ""bit4"": ""2A"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x23', '0xd2', '0x7', '0xf1', '0x5', '0x0']}"
+8,"通道2：001
+通道1：000
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""2"",
+    ""bit3"": ""0"",
+    ""bit4"": ""A"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x13', '0xd2', '0x7', '0xf1', '0xf5', '0x0']}"
+9,"通道2：100
+通道1：000
+link up",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""20"",
+    ""bit3"": ""0"",
+    ""bit4"": ""28"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xe0', '0xd2', '0x7', '0xf1', '0xc2', '0x0']}"
+10,"通道2：000
+通道1：000
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""8"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x10', '0xd2', '0x7', '0xf1', '0xf2', '0x0']}"
+11,"通道2：101
+通道1：011
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""27"",
+    ""bit3"": ""0"",
+    ""bit4"": ""2F"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x27', '0xd2', '0x7', '0xf1', '0x9', '0x0']}"
+12,"通道2：001
+通道1: 011
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""7"",
+    ""bit3"": ""0"",
+    ""bit4"": ""F"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x27', '0xd2', '0x7', '0xf1', '0x9', '0x0']}"
+13,"通道2：100
+通道1: 011
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""25"",
+    ""bit3"": ""0"",
+    ""bit4"": ""2D"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x27', '0xd2', '0x7', '0xf1', '0x9', '0x0']}"
+14,"通道2：000
+通道1: 011
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""5"",
+    ""bit3"": ""0"",
+    ""bit4"": ""D"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x27', '0xd2', '0x7', '0xf1', '0x9', '0x0']}"
+15,"通道2：011
+通道1: 011
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""F"",
+    ""bit3"": ""0"",
+    ""bit4"": ""17"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xf', '0xd2', '0x7', '0xf1', '0xf1', '0x0']}"
+16,"通道2：101
+通道1: 111
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""37"",
+    ""bit3"": ""0"",
+    ""bit4"": ""3F"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x37', '0xd2', '0x7', '0xf1', '0x19', '0x0']}"
+17,"通道2：001
+通道1: 111
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""17"",
+    ""bit3"": ""0"",
+    ""bit4"": ""1F"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x37', '0xd2', '0x7', '0xf1', '0x19', '0x0']}"
+18,"通道2：100
+通道1: 111
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""35"",
+    ""bit3"": ""0"",
+    ""bit4"": ""3D"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x37', '0xd2', '0x7', '0xf1', '0x19', '0x0']}"
+19,"通道2：000
+通道1: 111
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""15"",
+    ""bit3"": ""0"",
+    ""bit4"": ""1D"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x37', '0xd2', '0x7', '0xf1', '0x19', '0x0']}"
+20,"通道2：011
+通道1: 111
+link up",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""1F"",
+    ""bit3"": ""0"",
+    ""bit4"": ""27"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xdf', '0xd2', '0x7', '0xf1', '0xc1', '0x0']}"
+21,"通道2：111
+通道1: 111
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""3F"",
+    ""bit3"": ""0"",
+    ""bit4"": ""47"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x3f', '0xd2', '0x7', '0xf1', '0x21', '0x0']}"
+22,"通道2：101
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""26"",
+    ""bit3"": ""0"",
+    ""bit4"": ""2E"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x26', '0xd2', '0x7', '0xf1', '0x8', '0x0']}"
+23,"通道2：001
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""6"",
+    ""bit3"": ""0"",
+    ""bit4"": ""E"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x26', '0xd2', '0x7', '0xf1', '0x8', '0x0']}"
+24,"通道2：100
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""24"",
+    ""bit3"": ""0"",
+    ""bit4"": ""2C"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x26', '0xd2', '0x7', '0xf1', '0x8', '0x0']}"
+25,"通道2：000
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""4"",
+    ""bit3"": ""0"",
+    ""bit4"": ""C"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x26', '0xd2', '0x7', '0xf1', '0x8', '0x0']}"
+26,"通道2：011
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""E"",
+    ""bit3"": ""0"",
+    ""bit4"": ""16"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xe', '0xd2', '0x7', '0xf1', '0xf0', '0x0']}"
+27,"通道2：111
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""2E"",
+    ""bit3"": ""0"",
+    ""bit4"": ""36"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x2e', '0xd2', '0x7', '0xf1', '0x10', '0x0']}"
+28,"通道2：010
+通道1: 010
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""C"",
+    ""bit3"": ""0"",
+    ""bit4"": ""14"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xc', '0xd2', '0x7', '0xf1', '0xee', '0x0']}"
+29,"通道2：101
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""36"",
+    ""bit3"": ""0"",
+    ""bit4"": ""3E"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x36', '0xd2', '0x7', '0xf1', '0x18', '0x0']}"
+30,"通道2：001
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""16"",
+    ""bit3"": ""0"",
+    ""bit4"": ""1E"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x36', '0xd2', '0x7', '0xf1', '0x18', '0x0']}"
+31,"通道2：100
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""34"",
+    ""bit3"": ""0"",
+    ""bit4"": ""3C"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x36', '0xd2', '0x7', '0xf1', '0x18', '0x0']}"
+32,"通道2：000
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""14"",
+    ""bit3"": ""0"",
+    ""bit4"": ""1C"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x36', '0xd2', '0x7', '0xf1', '0x18', '0x0']}"
+33,"通道2：011
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""1E"",
+    ""bit3"": ""0"",
+    ""bit4"": ""26"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x1e', '0xd2', '0x7', '0xf1', '0x0', '0x0']}"
+34,"通道2：111
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""3E"",
+    ""bit3"": ""0"",
+    ""bit4"": ""46"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x3e', '0xd2', '0x7', '0xf1', '0x20', '0x0']}"
+35,"通道2：010
+通道1: 110
+link up",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""1C"",
+    ""bit3"": ""0"",
+    ""bit4"": ""24"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0xdc', '0xd2', '0x7', '0xf1', '0xbe', '0x0']}"
+36,"通道2：110
+通道1: 110
+link down",sleep(6),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F0"",
+    ""bit0"": ""5"",
+    ""bit1"": ""3"",
+    ""bit2"": ""3C"",
+    ""bit3"": ""0"",
+    ""bit4"": ""44"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(6),2.接收can消息,/vcardas/recv,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""7F1"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""0"",
+    ""isLoop"": false}",是,,,"{'result': ['0x6', '0x12', '0x3c', '0xd2', '0x7', '0xf1', '0x1e', '0x0']}"
