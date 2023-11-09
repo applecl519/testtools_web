@@ -21,6 +21,7 @@ def dianchifuzai_connect():
     except Exception as e:
         return jsonify(result='Connection Failed', error=str(e))
 
+
 @dianchifuzai_bp.route('/power_on', methods=['GET'])
 def dianchifuzai_on():
     try:
@@ -50,6 +51,7 @@ def dianchifuzai_changelocal():
     except Exception:
         return jsonify(result='Connection Failed')
 
+
 @dianchifuzai_bp.route('/changermt', methods=['GET'])
 def dianchifuzai_changermt():
     try:
@@ -60,12 +62,11 @@ def dianchifuzai_changermt():
         return jsonify(result='Connection Failed')
 
 
-
 @dianchifuzai_bp.route('/Screen', methods=['GET'])
 def dianchifuzai_Screen():
     try:
-        commandv = 'FETC:VOLT?'#屏幕显示电压
-        commanda = 'FETC:CURR?'#屏幕显示电流
+        commandv = 'FETC:VOLT?'  #屏幕显示电压
+        commanda = 'FETC:CURR?'  #屏幕显示电流
         responsev = instrument.query(commandv).strip()
         responsea = instrument.query(commanda).strip()
         result = f"{responsev}V;{responsea}A"
@@ -73,12 +74,13 @@ def dianchifuzai_Screen():
     except Exception:
         return jsonify(result='Connection Failed')
 
+
 @dianchifuzai_bp.route('/setVoltage', methods=['POST'])
 def dianchifuzai_setVoltage():
     try:
         dianchifuzai_V = int(request.form['voltage'])
-        commandv = 'FUNC VOLTage'#屏幕显示电压
-        commanda = f'VOLT {dianchifuzai_V}'#屏幕显示电流
+        commandv = 'FUNC VOLTage'  #屏幕显示电压
+        commanda = f'VOLT {dianchifuzai_V}'  #屏幕显示电流
         responsev = instrument.write(commandv)
         responsea = instrument.write(commanda)
         return jsonify(result='Connection Successful')

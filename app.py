@@ -18,7 +18,10 @@ from utils.testcase.testcase import *
 #     static_folder = os.path.join(sys._MEIPASS, 'static')
 #     app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
 # else:
-app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/static')
+app = Flask(__name__,
+            template_folder='templates',
+            static_folder='static',
+            static_url_path='/static')
 
 app.register_blueprint(tektronix_bp, url_prefix='/tek')
 app.register_blueprint(fluke_bp, url_prefix='/fluke')
@@ -75,10 +78,12 @@ def ethercat():
 #     return render_template('testcase.html', uploaded_files=uploaded_files)
 #     # return render_template('testcase.html')
 
+
 @app.route('/testcase')
 def testcase():
     uploaded_files = os.listdir(f'uploads')
-    return render_template('create_project.html',uploaded_files=uploaded_files)
+    return render_template('create_project.html',
+                           uploaded_files=uploaded_files)
     # return render_template('testcase.html')
 
 
@@ -129,7 +134,9 @@ def download_visa():
 def sftp_file_as_response(sftp, remote_path, file_name):
     file_handle = sftp.file(remote_path)
     # 发送文件作为响应
-    response = send_file(file_handle, as_attachment=True, download_name=file_name)
+    response = send_file(file_handle,
+                         as_attachment=True,
+                         download_name=file_name)
     return response
 
 
@@ -141,7 +148,9 @@ def download_pdf():
     # Check if the PDF file exists
     if os.path.exists(pdf_file_path):
         # Send the file to the client for download
-        return send_file(pdf_file_path, as_attachment=True, download_name=download_name)
+        return send_file(pdf_file_path,
+                         as_attachment=True,
+                         download_name=download_name)
     else:
         return "PDF file not found"
 
@@ -154,7 +163,9 @@ def download_pdf_it():
     # Check if the PDF file exists
     if os.path.exists(pdf_file_path):
         # Send the file to the client for download
-        return send_file(pdf_file_path, as_attachment=True, download_name=download_name)
+        return send_file(pdf_file_path,
+                         as_attachment=True,
+                         download_name=download_name)
     else:
         return "PDF file not found"
 
@@ -167,7 +178,9 @@ def download_pdf_signal():
     # Check if the PDF file exists
     if os.path.exists(pdf_file_path):
         # Send the file to the client for download
-        return send_file(pdf_file_path, as_attachment=True, download_name=download_name)
+        return send_file(pdf_file_path,
+                         as_attachment=True,
+                         download_name=download_name)
     else:
         return "PDF file not found"
 
@@ -180,7 +193,9 @@ def download_pdf_fluke():
     # Check if the PDF file exists
     if os.path.exists(pdf_file_path):
         # Send the file to the client for download
-        return send_file(pdf_file_path, as_attachment=True, download_name=download_name)
+        return send_file(pdf_file_path,
+                         as_attachment=True,
+                         download_name=download_name)
     else:
         return "PDF file not found"
 
@@ -193,7 +208,9 @@ def download_pdf_vcardas():
     # Check if the PDF file exists
     if os.path.exists(pdf_file_path):
         # Send the file to the client for download
-        return send_file(pdf_file_path, as_attachment=True, download_name=download_name)
+        return send_file(pdf_file_path,
+                         as_attachment=True,
+                         download_name=download_name)
     else:
         return "PDF file not found"
 
@@ -206,7 +223,9 @@ def download_exe_calculator():
     # Check if the PDF file exists
     if os.path.exists(pdf_file_path):
         # Send the file to the client for download
-        return send_file(pdf_file_path, as_attachment=True, download_name=download_name)
+        return send_file(pdf_file_path,
+                         as_attachment=True,
+                         download_name=download_name)
     else:
         return "exe  not found"
 
@@ -237,12 +256,17 @@ def create_project():
 @app.route('/project/<project_name>')
 def project_page(project_name):
     uploaded_files = os.listdir(f'uploads/{project_name}')
-    return render_template('testcase.html', uploaded_files=uploaded_files, project_name=project_name)
+    return render_template('testcase.html',
+                           uploaded_files=uploaded_files,
+                           project_name=project_name)
 
 
 @app.route('/get_project_list')
 def get_project_list():
-    project_list = [folder for folder in os.listdir('uploads') if os.path.isdir(os.path.join('uploads', folder))]
+    project_list = [
+        folder for folder in os.listdir('uploads')
+        if os.path.isdir(os.path.join('uploads', folder))
+    ]
     return jsonify({'projects': project_list})
 
 
@@ -251,14 +275,17 @@ def search_projects():
     query = request.args.get('query')
     if not query:
         return jsonify({'projects': []})
-    project_list = [folder for folder in os.listdir('uploads') if
-                    os.path.isdir(os.path.join('uploads', folder)) and query in folder]
+    project_list = [
+        folder for folder in os.listdir('uploads')
+        if os.path.isdir(os.path.join('uploads', folder)) and query in folder
+    ]
     return jsonify({'projects': project_list})
 
 
 # 辅助函数：检查文件扩展名是否合法
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit(
+        '.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/testcase/upload', methods=['POST'])
@@ -282,7 +309,8 @@ def test_case_upload_file():
 
     if file and allowed_file(file.filename):
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-        project_folder = os.path.join(app.config['UPLOAD_FOLDER'], project_name)
+        project_folder = os.path.join(app.config['UPLOAD_FOLDER'],
+                                      project_name)
         file.save(os.path.join(project_folder, file.filename))
         return redirect(f'/project/{project_name}')
     else:
@@ -295,7 +323,8 @@ def delete_file():
     project_name = request.args.get('project')
     if filename:
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        project_folder = os.path.join(app.config['UPLOAD_FOLDER'], project_name)
+        project_folder = os.path.join(app.config['UPLOAD_FOLDER'],
+                                      project_name)
         pro_file_del = os.path.join(project_folder, filename)
 
         if os.path.exists(file_path):
@@ -334,7 +363,8 @@ def download_file():
 def run_csvload():
     try:
         filename = request.args.get('filename')
-        csvload(BASE_URL='http://127.0.0.1:8000', csv_file=f"./uploads/{filename}")
+        csvload(BASE_URL='http://127.0.0.1:8000',
+                csv_file=f"./uploads/{filename}")
         return jsonify({"message": "自动化测试用例运行完成"})
     except Exception as e:
         return jsonify({"error": str(e)})
@@ -362,5 +392,4 @@ if __name__ == '__main__':
     app.run(
         host='0.0.0.0',  # 使服务器外部可见
         port=8000,  # 改变默认端口为8000
-        debug=True
-    )
+        debug=True)
