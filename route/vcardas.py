@@ -1,13 +1,14 @@
-from flask import Blueprint, jsonify, request,send_file
+from flask import Blueprint, jsonify, request, send_file
 from utils.vcardas.sendandrecv import *
 import threading
 import subprocess
 from func_timeout import FunctionTimedOut
 
-
 vcardas_bp = Blueprint('vcardas', __name__)
 
 is_looping = False
+
+
 @vcardas_bp.route('/sent', methods=['POST'])
 def vcardas_sent():
     global is_looping
@@ -31,14 +32,18 @@ def vcardas_sent():
 
         if not is_looping:
             try:
-                cmd.sendCan(CanCmd.EFrameStatus.Can, bytes([int(b0, 16),
-                                                            int(b1, 16),
-                                                            int(b2, 16),
-                                                            int(b3, 16),
-                                                            int(b4, 16),
-                                                            int(b5, 16),
-                                                            int(b6, 16),
-                                                            int(b7, 16)]), int(id, 16))
+                cmd.sendCan(
+                    CanCmd.EFrameStatus.Can,
+                    bytes([
+                        int(b0, 16),
+                        int(b1, 16),
+                        int(b2, 16),
+                        int(b3, 16),
+                        int(b4, 16),
+                        int(b5, 16),
+                        int(b6, 16),
+                        int(b7, 16)
+                    ]), int(id, 16))
             except Exception as e:
                 print("Error sending CAN message:", e)
             return jsonify(result='send Successful')
@@ -47,17 +52,22 @@ def vcardas_sent():
                 # is_looping = True
                 def send_message():
                     if is_looping:
-                        cmd.sendCan(CanCmd.EFrameStatus.Can, bytes([int(b0, 16),
-                                                                    int(b1, 16),
-                                                                    int(b2, 16),
-                                                                    int(b3, 16),
-                                                                    int(b4, 16),
-                                                                    int(b5, 16),
-                                                                    int(b6, 16),
-                                                                    int(b7, 16)]), int(id, 16))
+                        cmd.sendCan(
+                            CanCmd.EFrameStatus.Can,
+                            bytes([
+                                int(b0, 16),
+                                int(b1, 16),
+                                int(b2, 16),
+                                int(b3, 16),
+                                int(b4, 16),
+                                int(b5, 16),
+                                int(b6, 16),
+                                int(b7, 16)
+                            ]), int(id, 16))
                         # 继续下一次循环
                         if is_looping:
-                            threading.Timer(0, send_message).start()  # 使用 threading.Timer 来模拟异步操作
+                            threading.Timer(0, send_message).start(
+                            )  # 使用 threading.Timer 来模拟异步操作
 
                 # 启动第一次循环
                 send_message()
@@ -73,7 +83,6 @@ def vcardas_stop_loop():
     global is_looping
     is_looping = False
     return jsonify(result='Loop Stopped')
-
 
 
 @vcardas_bp.route('/recv', methods=['POST'])
@@ -110,6 +119,4 @@ def vcardas_recv():
                     return jsonify(result=hex_list)
         return jsonify(result=["没有匹配消息"])
     except func_timeout.FunctionTimedOut as e:
-            return jsonify(result=["总线无消息"])
-
-
+        return jsonify(result=["总线无消息"])
