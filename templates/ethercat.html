@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,8 @@
         .content {
             text-align: left;
             margin: 10px;
-            width: 20%; /* 设置宽度为父元素宽度的90%（可根据需要调整） */
+            width: 20%;
+            /* 设置宽度为父元素宽度的90%（可根据需要调整） */
             height: 730px;
             /*max-width: 600px; !* 设置最大宽度为800像素，根据需要调整 *!*/
             /*width: 100%; !* 使其适应其父元素的宽度 *!*/
@@ -46,17 +48,26 @@
             width: 200px;
 
         }
-                /* Add styles for the container */
+
+        /* Add styles for the container */
         .container {
             flex: 1;
-            background-color: #fff; /* Set background color to white */
-            border: 1px solid #ccc; /* Add a border with a light gray color */
-            border-radius: 10px; /* Round the corners */
-            padding: 20px; /* Add some padding inside the container */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-            text-align: left; /* Center the content */
-            max-width: 400px; /* Limit the maximum width */
-            margin: 0 auto; /* Center the container horizontally */
+            background-color: #fff;
+            /* Set background color to white */
+            border: 1px solid #ccc;
+            /* Add a border with a light gray color */
+            border-radius: 10px;
+            /* Round the corners */
+            padding: 20px;
+            /* Add some padding inside the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add a subtle shadow */
+            text-align: left;
+            /* Center the content */
+            max-width: 400px;
+            /* Limit the maximum width */
+            margin: 0 auto;
+            /* Center the container horizontally */
         }
 
         .content-s {
@@ -74,7 +85,8 @@
             padding: 10px;
             background-color: #fff;
             border-radius: 5px;
-            max-height: 1000px; /* 设置最大高度并启用滚动条 */
+            max-height: 1000px;
+            /* 设置最大高度并启用滚动条 */
             overflow-y: auto;
         }
 
@@ -99,24 +111,32 @@
         .container input[type="text"] {
             padding: 10px;
             border-radius: 5px;
-            border: 2px solid #000; /* 修改边框颜色为蓝色 */
-            background-color: #fff; /* 修改背景颜色为白色 */
-            width: 30%; /* 修改宽度 */
+            border: 2px solid #000;
+            /* 修改边框颜色为蓝色 */
+            background-color: #fff;
+            /* 修改背景颜色为白色 */
+            width: 30%;
+            /* 修改宽度 */
             margin-bottom: 10px;
-            color: #333; /* 修改文本颜色 */
+            color: #333;
+            /* 修改文本颜色 */
         }
 
         .container button[type="text"] {
             padding: 10px;
             border-radius: 5px;
-            border: 2px solid #000; /* 修改边框颜色为蓝色 */
-            background-color: #fff; /* 修改背景颜色为白色 */
-            width: 30%; /* 修改宽度 */
+            border: 2px solid #000;
+            /* 修改边框颜色为蓝色 */
+            background-color: #fff;
+            /* 修改背景颜色为白色 */
+            width: 30%;
+            /* 修改宽度 */
             margin-bottom: 10px;
-            color: #333; /* 修改文本颜色 */
+            color: #333;
+            /* 修改文本颜色 */
         }
 
-                /* 绿色的样式类 */
+        /* 绿色的样式类 */
         .success {
             color: green;
         }
@@ -126,22 +146,29 @@
             color: red;
         }
 
-                /* 修改所有按钮样式为白底黑字 */
+        /* 修改所有按钮样式为白底黑字 */
         input[type="submit"] {
             padding: 10px 20px;
-            background-color: #fff; /* 修改按钮背景颜色为白色 */
-            color: #000; /* 修改按钮文本颜色为黑色 */
-            border: 2px solid #000; /* 添加黑色边框 */
+            background-color: #fff;
+            /* 修改按钮背景颜色为白色 */
+            color: #000;
+            /* 修改按钮文本颜色为黑色 */
+            border: 2px solid #000;
+            /* 添加黑色边框 */
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* 添加过渡效果 */
+            transition: background-color 0.3s ease;
+            /* 添加过渡效果 */
         }
 
         /* 鼠标悬停时的样式 */
         input[type="submit"]:hover {
-            background-color: #000; /* 修改悬停时的背景颜色为黑色 */
-            color: #fff; /* 修改悬停时的文本颜色为白色 */
+            background-color: #000;
+            /* 修改悬停时的背景颜色为黑色 */
+            color: #fff;
+            /* 修改悬停时的文本颜色为白色 */
         }
+
         /* Style the buttons inside the container */
         .container button.button-style {
             background-color: #fff;
@@ -158,34 +185,44 @@
             background-color: #000;
             color: #fff;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            font-size: 20px; /* 添加这一行，设置英文字体大小为16像素 */
+            font-size: 20px;
+            /* 添加这一行，设置英文字体大小为16像素 */
         }
 
         .strong-input {
             font-weight: bold;
-          }
+        }
 
         .container-wrapper {
             display: flex;
             justify-content: space-between;
         }
+
         iframe {
-            margin-left: 0px; /* 增加水平间距，10px 或根据需要调整 */
+            margin-left: 0px;
+            /* 增加水平间距，10px 或根据需要调整 */
         }
 
         /* 自定义<select>元素的样式 */
         #measurementSelect {
-            width: 200px; /* 设置宽度 */
-            padding: 5px; /* 设置内边距 */
-            font-size: 16px; /* 设置字体大小 */
-            border: 1px solid #000; /* 设置边框 */
-            border-radius: 5px; /* 设置边框圆角 */
-            background-color: #fff; /* 设置背景颜色 */
+            width: 200px;
+            /* 设置宽度 */
+            padding: 5px;
+            /* 设置内边距 */
+            font-size: 16px;
+            /* 设置字体大小 */
+            border: 1px solid #000;
+            /* 设置边框 */
+            border-radius: 5px;
+            /* 设置边框圆角 */
+            background-color: #fff;
+            /* 设置背景颜色 */
         }
 
         /* 为表单元素添加垂直间距 */
@@ -196,6 +233,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>EtherCat</h1>
@@ -207,7 +245,7 @@
                 <form onsubmit="return sendethercatMessage()">
                     <label for="ip"><strong>IP</strong>:</label>
                     <input type="text" id="ip" name="ip" value="192.168.10.207">
-<!--?                    <input type="submit" value="测试连接" class="strong-input">-->
+                    <!--?                    <input type="submit" value="测试连接" class="strong-input">-->
                     <br>
                     <label for="user">账号:</label>
                     <input type="text" id="user" name="voltage" value="rtpc">
@@ -216,14 +254,15 @@
                     <input type="text" id="passwd" name="passwd" value="sv123">
                     <br>
                     <label for="command">远程命令:</label>
-                    <input type="text" id="command" name="command" value="echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 5000000'">
+                    <input type="text" id="command" name="command"
+                        value="echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 5000000'">
                     <br>
                     <label for="mastr">匹配字符串:</label>
                     <input type="text" id="mastr" name="mastr" value="eg:1&2&3">
                     <br>
-<!--?                    <label for="file" style="display: none;">选择文件：</label>-->
-<!--?                    <input type="file" id="file" name="file" accept=".txt" style="display: none;">-->
-<!--?                    <button type="button" class="button button-style" onclick="selectAndUploadFile()">选择并上传文件</button>-->
+                    <!--?                    <label for="file" style="display: none;">选择文件：</label>-->
+                    <!--?                    <input type="file" id="file" name="file" accept=".txt" style="display: none;">-->
+                    <!--?                    <button type="button" class="button button-style" onclick="selectAndUploadFile()">选择并上传文件</button>-->
                     <input type="submit" value="确定">
                     <span id="connectionStatus" class="success"></span>
                 </form>
@@ -244,7 +283,7 @@
         const logArea = document.getElementById("logArea");
 
         // 添加点击事件处理程序
-        clearLogButton.addEventListener("click", function() {
+        clearLogButton.addEventListener("click", function () {
             // 清空日志区域
             logArea.innerHTML = "";
         });
@@ -276,26 +315,26 @@
                 },
                 body: JSON.stringify(sendData)
             })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the backend response
-                const logArea = document.getElementById("logArea");
-                const logEntries = data.result.split('\n'); // Split text by newline
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the backend response
+                    const logArea = document.getElementById("logArea");
+                    const logEntries = data.result.split('\n'); // Split text by newline
 
-                // Create a div element for each log entry
-                logEntries.forEach(entry => {
+                    // Create a div element for each log entry
+                    logEntries.forEach(entry => {
+                        const logEntry = document.createElement("div");
+                        logEntry.textContent = entry;
+                        logArea.appendChild(logEntry);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const logArea = document.getElementById("logArea");
                     const logEntry = document.createElement("div");
-                    logEntry.textContent = entry;
+                    logEntry.textContent = '发送失败';
                     logArea.appendChild(logEntry);
                 });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                const logArea = document.getElementById("logArea");
-                const logEntry = document.createElement("div");
-                logEntry.textContent = '发送失败';
-                logArea.appendChild(logEntry);
-            });
 
             // Prevent the form from submitting and page reload
             return false;
@@ -320,25 +359,25 @@
                         method: 'POST',
                         body: formData
                     })
-                            .then(response => response.json())
-                            .then(data => {
-                                // Handle the backend response for file upload
-                                const logArea = document.getElementById("logArea");
-                                const logEntry = document.createElement("div");
-                                logEntry.textContent = data.result;
-                                logArea.appendChild(logEntry);
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                const logArea = document.getElementById("logArea");
-                                const logEntry = document.createElement("div");
-                                logEntry.textContent = '上传失败';
-                                logArea.appendChild(logEntry);
-                            });
+                        .then(response => response.json())
+                        .then(data => {
+                            // Handle the backend response for file upload
+                            const logArea = document.getElementById("logArea");
+                            const logEntry = document.createElement("div");
+                            logEntry.textContent = data.result;
+                            logArea.appendChild(logEntry);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            const logArea = document.getElementById("logArea");
+                            const logEntry = document.createElement("div");
+                            logEntry.textContent = '上传失败';
+                            logArea.appendChild(logEntry);
+                        });
                 }
             });
         }
     </script>
 </body>
-</html>
 
+</html>

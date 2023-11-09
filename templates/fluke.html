@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,8 @@
         .content {
             text-align: left;
             margin: 0px;
-            width: 30%; /* 设置宽度为父元素宽度的90%（可根据需要调整） */
+            width: 30%;
+            /* 设置宽度为父元素宽度的90%（可根据需要调整） */
             /*max-width: 100%; !* 设置最大宽度为100% *!*/
             /*max-width: 600px; !* 设置最大宽度为800像素，根据需要调整 *!*/
             /*width: 100%; !* 使其适应其父元素的宽度 *!*/
@@ -45,16 +47,25 @@
             width: 200px;
 
         }
-                /* Add styles for the container */
+
+        /* Add styles for the container */
         .container {
-            background-color: #fff; /* Set background color to white */
-            border: 1px solid #ccc; /* Add a border with a light gray color */
-            border-radius: 10px; /* Round the corners */
-            padding: 20px; /* Add some padding inside the container */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-            text-align: left; /* Center the content */
-            max-width: 400px; /* Limit the maximum width */
-            margin: 0 auto; /* Center the container horizontally */
+            background-color: #fff;
+            /* Set background color to white */
+            border: 1px solid #ccc;
+            /* Add a border with a light gray color */
+            border-radius: 10px;
+            /* Round the corners */
+            padding: 20px;
+            /* Add some padding inside the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add a subtle shadow */
+            text-align: left;
+            /* Center the content */
+            max-width: 400px;
+            /* Limit the maximum width */
+            margin: 0 auto;
+            /* Center the container horizontally */
         }
 
         /* Style the buttons inside the container */
@@ -72,14 +83,18 @@
         .container input[type="text"] {
             padding: 10px;
             border-radius: 5px;
-            border: 2px solid #000; /* 修改边框颜色为蓝色 */
-            background-color: #fff; /* 修改背景颜色为白色 */
-            width: 30%; /* 修改宽度 */
+            border: 2px solid #000;
+            /* 修改边框颜色为蓝色 */
+            background-color: #fff;
+            /* 修改背景颜色为白色 */
+            width: 30%;
+            /* 修改宽度 */
             margin-bottom: 10px;
-            color: #333; /* 修改文本颜色 */
+            color: #333;
+            /* 修改文本颜色 */
         }
 
-                /* 绿色的样式类 */
+        /* 绿色的样式类 */
         .success {
             color: green;
         }
@@ -89,22 +104,29 @@
             color: red;
         }
 
-                /* 修改所有按钮样式为白底黑字 */
+        /* 修改所有按钮样式为白底黑字 */
         input[type="submit"] {
             padding: 10px 20px;
-            background-color: #fff; /* 修改按钮背景颜色为白色 */
-            color: #000; /* 修改按钮文本颜色为黑色 */
-            border: 2px solid #000; /* 添加黑色边框 */
+            background-color: #fff;
+            /* 修改按钮背景颜色为白色 */
+            color: #000;
+            /* 修改按钮文本颜色为黑色 */
+            border: 2px solid #000;
+            /* 添加黑色边框 */
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* 添加过渡效果 */
+            transition: background-color 0.3s ease;
+            /* 添加过渡效果 */
         }
 
         /* 鼠标悬停时的样式 */
         input[type="submit"]:hover {
-            background-color: #000; /* 修改悬停时的背景颜色为黑色 */
-            color: #fff; /* 修改悬停时的文本颜色为白色 */
+            background-color: #000;
+            /* 修改悬停时的背景颜色为黑色 */
+            color: #fff;
+            /* 修改悬停时的文本颜色为白色 */
         }
+
         /* Style the buttons inside the container */
         .container button.button-style {
             background-color: #fff;
@@ -121,27 +143,32 @@
             background-color: #000;
             color: #fff;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            font-size: 20px; /* 添加这一行，设置英文字体大小为16像素 */
+            font-size: 20px;
+            /* 添加这一行，设置英文字体大小为16像素 */
         }
 
         .strong-input {
             font-weight: bold;
-          }
+        }
 
         .container-wrapper {
             display: flex;
             justify-content: space-between;
         }
+
         iframe {
-            margin-left: 0px; /* 增加水平间距，10px 或根据需要调整 */
+            margin-left: 0px;
+            /* 增加水平间距，10px 或根据需要调整 */
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>万用表控制</h1>
@@ -167,30 +194,29 @@
         function connect() {
             const visa = document.getElementById('VISA').value;
             fetch(`/fluke/connect/${visa}`)
-            .then(response => response.json())
-            .then(data => {
-                const resultElement = document.getElementById('connectionStatus');
-                if (data.result === 'Connection Successful') {
-                    resultElement.innerHTML = '&#10004;'; // 使用 "✓" 符号
-                    resultElement.className = 'success';
-                } else {
-                    resultElement.innerHTML = '&#10008;'; // 使用 "X" 符号
-                    resultElement.className = 'error';
-                }
-            });
+                .then(response => response.json())
+                .then(data => {
+                    const resultElement = document.getElementById('connectionStatus');
+                    if (data.result === 'Connection Successful') {
+                        resultElement.innerHTML = '&#10004;'; // 使用 "✓" 符号
+                        resultElement.className = 'success';
+                    } else {
+                        resultElement.innerHTML = '&#10008;'; // 使用 "X" 符号
+                        resultElement.className = 'error';
+                    }
+                });
             return false;
         }
         // Function to call the first API
         function getflukeresult() {
             const visa = document.getElementById('VISA').value;
             fetch(`/fluke/query/${visa}`)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('getflukeresult').innerHTML = data.result;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('getflukeresult').innerHTML = data.result;
+                });
         }
     </script>
 </body>
+
 </html>
-
-

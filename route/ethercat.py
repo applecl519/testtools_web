@@ -2,7 +2,6 @@
 from flask import Blueprint, jsonify, request
 from fabric import Connection
 
-
 ethercat_bp = Blueprint('ethercat', __name__)
 
 
@@ -18,7 +17,9 @@ def ethercat_sent():
         result = ""
         if request.method == 'POST':
             try:
-                with Connection(host=host, user=username, connect_kwargs={'password': password}) as c:
+                with Connection(host=host,
+                                user=username,
+                                connect_kwargs={'password': password}) as c:
                     result = c.run(command, hide=True).stdout
                     if match_line:
                         result = filter_result(result, match_line)

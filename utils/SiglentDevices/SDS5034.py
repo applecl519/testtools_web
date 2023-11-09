@@ -33,46 +33,47 @@ class SDS5034(SiglentBase):
     # see table 2 from https://siglentna.com/wp-content/uploads/dlm_uploads/2022/07/SDS_ProgrammingGuide_EN11C-2.pdf
     # page 559
 
-    TDIV_ENUM = (200e-12,
-                 500e-12,
-                 1e-9,
-                 2e-9,
-                 5e-9,
-                 10e-9,
-                 20e-9,
-                 50e-9,
-                 100e-9,
-                 200e-9,
-                 500e-9,
-                 1e-6,
-                 2e-6,
-                 5e-6,
-                 10e-6,
-                 20e-6,
-                 50e-6,
-                 100e-6,
-                 200e-6,
-                 500e-6,
-                 1e-3,
-                 2e-3,
-                 5e-3,
-                 10e-3,
-                 20e-3,
-                 50e-3,
-                 100e-3,
-                 200e-3,
-                 500e-3,
-                 1,
-                 2,
-                 5,
-                 10,
-                 20,
-                 50,
-                 100,
-                 200,
-                 500,
-                 1000,
-                 )
+    TDIV_ENUM = (
+        200e-12,
+        500e-12,
+        1e-9,
+        2e-9,
+        5e-9,
+        10e-9,
+        20e-9,
+        50e-9,
+        100e-9,
+        200e-9,
+        500e-9,
+        1e-6,
+        2e-6,
+        5e-6,
+        10e-6,
+        20e-6,
+        50e-6,
+        100e-6,
+        200e-6,
+        500e-6,
+        1e-3,
+        2e-3,
+        5e-3,
+        10e-3,
+        20e-3,
+        50e-3,
+        100e-3,
+        200e-3,
+        500e-3,
+        1,
+        2,
+        5,
+        10,
+        20,
+        50,
+        100,
+        200,
+        500,
+        1000,
+    )
 
     def __init__(self, hostname='169.254.239.195'):
         """ Init.
@@ -448,7 +449,8 @@ class SDS5034(SiglentBase):
             mode (str): DC|AC|GND
         """
         mode = mode.upper()
-        assert mode in ('DC', 'AC', 'GND'), 'mode must be one of DC, AC, or GND'
+        assert mode in ('DC', 'AC',
+                        'GND'), 'mode must be one of DC, AC, or GND'
         self.write(f'CHANnel{int(ch)}:COUPling {mode}')
 
     # 电阻
@@ -624,7 +626,8 @@ class SDS5034(SiglentBase):
         elif mode in 'auto':
             self.write('TRIGger:MODE AUTO')
         else:
-            raise RuntimeError("mode must be one of 'single', 'normal', or 'auto'")
+            raise RuntimeError(
+                "mode must be one of 'single', 'normal', or 'auto'")
 
     def set_trig_state(self, state):
         """Set trigger state
@@ -683,34 +686,88 @@ class SDS5034(SiglentBase):
 
     # 测量
     def set_measurement_item(self, lst_measurement=None):
-        var = {'峰峰值': 'PKPK', '最大值': 'MAX', '最小值': 'MIN', '幅值': 'AMPL',
-               '顶端值': 'TOP', '低端值': 'BASE', 'L@T': 'LEVELX', '周期平局值': 'CMEAN',
-               '平均值': 'MEAN', '标准差': 'STDEV', '周期标准差': 'VSTD', '均方根': 'RMS',
-               '周期均方根': 'CRMS', '中位数': 'MEDIAN', '周期中位数': 'CMEDIAN', '下降过激': 'OVSN',
-               '下降前激': 'FPRE', '上升过激': 'OVSP', '上升前激': 'RPRE', '周期': 'PER', '频率': 'FREQ',
-               '最大值时间': 'TMAX', '最小值时间': 'TMIN', '正脉宽': 'PWID', '负脉宽': 'NWID', '正占空比': 'DUTY',
-               '负占空比': 'NDUTY', '正脉冲串宽度': 'WID', '负脉冲串宽度': 'NBWID', '延时': 'DELAY', 'T@M': 'TIMEL',
-               '上升时间': 'RISE', '下降时间': 'FALL', '10-90%上升时间': 'RISE10T90', '90-10%下降时间': 'FALL90T10',
-               '相邻周期抖动': 'CCJ', '直流正面积': 'PAREA', '直流负面积': 'NAREA', '直流有效面积': 'AREA',
-               '直流绝对面积': 'ABSAREA',
-               '周期数': 'CYCLES', '上升沿个数': 'REDGES', '下降沿个数': 'FEDGES', '边沿总数': 'EDGES',
-               '正脉冲数': 'PPULSES',
-               '负脉冲数': 'NPULSES', '相位': 'PHA', '时滞': 'SKEW', 'FRFR': 'FRR', 'FRFF': 'FRF', 'FFFR': 'FFR',
-               'FFFF': 'FFF', 'FRLR': 'LRR', 'FRLF': 'LRF', 'FFLR': 'LFR', 'FFLF': 'LFF',
-               '交流正面积': 'PACArea', '交流负面积': 'NACArea', '交流有效面积': 'ACArea', '交流绝对面积': 'ABSACArea',
-               '上升沿斜率': 'PSLOPE', '下降沿斜率': 'NSLOPE', 'TSU@R': 'TSR', 'TSU@F': 'TSF', 'TH@R': 'THR',
-               'TH@F': 'THF'}
+        var = {
+            '峰峰值': 'PKPK',
+            '最大值': 'MAX',
+            '最小值': 'MIN',
+            '幅值': 'AMPL',
+            '顶端值': 'TOP',
+            '低端值': 'BASE',
+            'L@T': 'LEVELX',
+            '周期平局值': 'CMEAN',
+            '平均值': 'MEAN',
+            '标准差': 'STDEV',
+            '周期标准差': 'VSTD',
+            '均方根': 'RMS',
+            '周期均方根': 'CRMS',
+            '中位数': 'MEDIAN',
+            '周期中位数': 'CMEDIAN',
+            '下降过激': 'OVSN',
+            '下降前激': 'FPRE',
+            '上升过激': 'OVSP',
+            '上升前激': 'RPRE',
+            '周期': 'PER',
+            '频率': 'FREQ',
+            '最大值时间': 'TMAX',
+            '最小值时间': 'TMIN',
+            '正脉宽': 'PWID',
+            '负脉宽': 'NWID',
+            '正占空比': 'DUTY',
+            '负占空比': 'NDUTY',
+            '正脉冲串宽度': 'WID',
+            '负脉冲串宽度': 'NBWID',
+            '延时': 'DELAY',
+            'T@M': 'TIMEL',
+            '上升时间': 'RISE',
+            '下降时间': 'FALL',
+            '10-90%上升时间': 'RISE10T90',
+            '90-10%下降时间': 'FALL90T10',
+            '相邻周期抖动': 'CCJ',
+            '直流正面积': 'PAREA',
+            '直流负面积': 'NAREA',
+            '直流有效面积': 'AREA',
+            '直流绝对面积': 'ABSAREA',
+            '周期数': 'CYCLES',
+            '上升沿个数': 'REDGES',
+            '下降沿个数': 'FEDGES',
+            '边沿总数': 'EDGES',
+            '正脉冲数': 'PPULSES',
+            '负脉冲数': 'NPULSES',
+            '相位': 'PHA',
+            '时滞': 'SKEW',
+            'FRFR': 'FRR',
+            'FRFF': 'FRF',
+            'FFFR': 'FFR',
+            'FFFF': 'FFF',
+            'FRLR': 'LRR',
+            'FRLF': 'LRF',
+            'FFLR': 'LFR',
+            'FFLF': 'LFF',
+            '交流正面积': 'PACArea',
+            '交流负面积': 'NACArea',
+            '交流有效面积': 'ACArea',
+            '交流绝对面积': 'ABSACArea',
+            '上升沿斜率': 'PSLOPE',
+            '下降沿斜率': 'NSLOPE',
+            'TSU@R': 'TSR',
+            'TSU@F': 'TSF',
+            'TH@R': 'THR',
+            'TH@F': 'THF'
+        }
 
         if not lst_measurement:
-            lst_measurement = ['周期', '幅值', '频率', '正占空比', '正脉宽', '最大值', '最小值', '顶端值', '低端值',
-                               '上升沿斜率', '下降沿斜率']
+            lst_measurement = [
+                '周期', '幅值', '频率', '正占空比', '正脉宽', '最大值', '最小值', '顶端值', '低端值',
+                '上升沿斜率', '下降沿斜率'
+            ]
         # n = 0
         # for measurement_mode in lst_measurement:
         #     if n < 12:
         #         self.write(f':MEASure:ADVanced:P{n + 1}:TYPE {var[measurement_mode]}')
         #     n += 1
         for n in range(len(lst_measurement)):
-            self.write(f':MEASure:ADVanced:P{n + 1}:TYPE {var[lst_measurement[n]]}')
+            self.write(
+                f':MEASure:ADVanced:P{n + 1}:TYPE {var[lst_measurement[n]]}')
 
     # read waveform commands
     def get_wave_preamble(self, ch=None):
@@ -770,7 +827,6 @@ class SDS5034(SiglentBase):
         wave_desc_bytes: wave_desc块的字节长度。(346)
 
         """
-
         """Get preamble for waveform data of specified channel (dict, see below for key values)
 
         Args:
@@ -903,8 +959,8 @@ class SDS5034(SiglentBase):
         # code_per_div. The value is different for different vertical gain of different models
         # see page 562 of manual
         preamble['code_per_div'] = struct.unpack('f', recv[164:168])[0]
-        if preamble['code_per_div'] > 2 ** 8:
-            preamble['code_per_div'] /= 2 ** 4
+        if preamble['code_per_div'] > 2**8:
+            preamble['code_per_div'] /= 2**4
 
         # Adc_bit
         preamble['adc_bit'] = struct.unpack('h', recv[172:174])[0]
@@ -922,7 +978,8 @@ class SDS5034(SiglentBase):
         preamble['t_delay_s'] = struct.unpack('d', recv[180:188])[0]
 
         # Time_base. This is the enumerated time/div.
-        preamble['t_per_div'] = self.TDIV_ENUM[struct.unpack('h', recv[324:326])[0]]
+        preamble['t_per_div'] = self.TDIV_ENUM[struct.unpack(
+            'h', recv[324:326])[0]]
 
         # Vertical coupling. 0-DC,1-AC,2-GND
         options = ['DC', 'AC', 'GND']
@@ -946,8 +1003,10 @@ class SDS5034(SiglentBase):
         preamble['channel'] = f"C{self.get_wave_ch()}"
 
         # adjusted vertical values
-        preamble['v_per_div'] = preamble['v_per_div_raw'] * preamble['probe_atten']
-        preamble['v_offset'] = preamble['v_offset_raw'] * preamble['probe_atten']
+        preamble[
+            'v_per_div'] = preamble['v_per_div_raw'] * preamble['probe_atten']
+        preamble[
+            'v_offset'] = preamble['v_offset_raw'] * preamble['probe_atten']
 
         # save
         self.preambles[preamble['channel']] = preamble
@@ -1087,7 +1146,7 @@ class SDS5034(SiglentBase):
     def getdecode(self):
         return self.query('DEC:BUS1:PROT?')
 
-    def get_screenshot(self,photoname):
+    def get_screenshot(self, photoname):
         try:
             self.query(f'SAVE:IMAGe "U-disk0/SIGLENT/{photoname}.png",PNG,ON')
         except Exception as e:
@@ -1148,5 +1207,6 @@ class SDS5034(SiglentBase):
     #
     #     for col in self.waveforms:
     #         self.draw_wave(int(col[1]), ax=ax, adjust_ylim=False, **plotargs)
+
 
 # s = SDS5034('169.254.239.195')

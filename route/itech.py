@@ -4,7 +4,6 @@ import pyvisa as visa
 itech_bp = Blueprint('itech', __name__)
 
 
-
 @itech_bp.route('/connect/<visas>', methods=['GET'])
 def itech_connect(visas):
     global instrument

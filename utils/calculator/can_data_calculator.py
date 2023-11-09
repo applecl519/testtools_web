@@ -34,7 +34,8 @@ def result_bytes(num, byte_example, choose_card='1'):
                     print(f'CAN ID 100   CAN DATA ：第{num}个字节为： {hex_num} \n')
                     # autovcardas(num, hex_num)
                 elif num > 6:
-                    print(f'CAN ID 101   CAN DATA ：第{num - 6}个字节为：{hex_num} \n')
+                    print(
+                        f'CAN ID 101   CAN DATA ：第{num - 6}个字节为：{hex_num} \n')
                     # autovcardas(num-6, hex_num)
             else:
                 print(f'CAN DATA ：第{num}个字节为： {hex_num} \n')
@@ -229,10 +230,12 @@ def Relay_sign_data():
 def Relay_rate_data():
     print("example : 500,1000,125,250")
     Relay_rate = input('请输入波特率 ：')
-    data1 = {'500': "02 F4 01 00 00 00 00 41",
-             '125': "02 7D 00 00 00 00 00 43",
-             '250': "02 FA 00 00 00 00 00 C1",
-             '1000': "02 E8 03 00 00 00 00 6C"}
+    data1 = {
+        '500': "02 F4 01 00 00 00 00 41",
+        '125': "02 7D 00 00 00 00 00 43",
+        '250': "02 FA 00 00 00 00 00 C1",
+        '1000': "02 E8 03 00 00 00 00 6C"
+    }
     print(data1.get(Relay_rate))
 
 
@@ -250,8 +253,7 @@ def Relay_ddsz():
             channles[int(val) + 1] = 1
     c_sublists = [channles[i:i + 8] for i in range(0, len(channles), 8)]
     num = 0
-    print(f'CAN ID : 210\n'
-          "CAN DATA ：第1个字节为： 0x1")
+    print(f'CAN ID : 210\n' "CAN DATA ：第1个字节为： 0x1")
     for sublist in c_sublists:
         num += 1
         hex_value = hex(int(''.join(map(str, sublist[::-1])), 2))
@@ -358,35 +360,39 @@ def dianxinfuzai():
                 canid = '0x646'
                 for i, j in zip(channels_list, ch_mv):
                     decimal_number = int(j)
-                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8) & 0xFF)
-                    hexadecimal_string2 = '{:02X}'.format(decimal_number & 0xFF)
-                    candata[0][int(i)-1] = '1'
+                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8)
+                                                          & 0xFF)
+                    hexadecimal_string2 = '{:02X}'.format(decimal_number
+                                                          & 0xFF)
+                    candata[0][int(i) - 1] = '1'
                     if i == '1':
                         candata[int(i)] = str(hexadecimal_string1)
-                        candata[int(i)+1] = str(hexadecimal_string2)
+                        candata[int(i) + 1] = str(hexadecimal_string2)
                     elif i == '2':
-                        candata[int(i)+1] = str(hexadecimal_string1)
+                        candata[int(i) + 1] = str(hexadecimal_string1)
                         candata[int(i) + 2] = str(hexadecimal_string2)
                     elif i == '3':
-                        candata[int(i)+2] = str(hexadecimal_string1)
+                        candata[int(i) + 2] = str(hexadecimal_string1)
                         candata[int(i) + 3] = str(hexadecimal_string2)
 
             elif channels.issubset({'4', '5', '6'}):
                 canid = '0x647'
                 for i, j in zip(channels_list, ch_mv):
                     decimal_number = int(j)
-                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8) & 0xFF)
-                    hexadecimal_string2 = '{:02X}'.format(decimal_number & 0xFF)
-                    candata[0][int(i)-4] = '1'
+                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8)
+                                                          & 0xFF)
+                    hexadecimal_string2 = '{:02X}'.format(decimal_number
+                                                          & 0xFF)
+                    candata[0][int(i) - 4] = '1'
                     if i == '4':
-                        candata[int(i)-3] = str(hexadecimal_string1)
-                        candata[int(i)+1-3] = str(hexadecimal_string2)
+                        candata[int(i) - 3] = str(hexadecimal_string1)
+                        candata[int(i) + 1 - 3] = str(hexadecimal_string2)
                     elif i == '5':
-                        candata[int(i)+1-3] = str(hexadecimal_string1)
-                        candata[int(i) + 2-3] = str(hexadecimal_string2)
+                        candata[int(i) + 1 - 3] = str(hexadecimal_string1)
+                        candata[int(i) + 2 - 3] = str(hexadecimal_string2)
                     elif i == '6':
-                        candata[int(i)+2-3] = str(hexadecimal_string1)
-                        candata[int(i) + 3-3] = str(hexadecimal_string2)
+                        candata[int(i) + 2 - 3] = str(hexadecimal_string1)
+                        candata[int(i) + 3 - 3] = str(hexadecimal_string2)
             else:
                 print("无效的通道组合或通道未在允许的范围内")  # 不支持的组合
         else:
@@ -400,8 +406,7 @@ def dianxinfuzai():
                 # 使用 hex() 函数将整数转换为十六进制字符串
                 hexadecimal_string = hex(decimal_number)
                 candata[i] = hexadecimal_string[2:]
-        print(f'CAN ID: {canid}   \n'
-              f'CAN DATA: {candata} \n')
+        print(f'CAN ID: {canid}   \n' f'CAN DATA: {candata} \n')
     if t == 'A' or 'a':
         print("example : 1 2 3 or 1-24 or 1 2 3 4-24")
         channle_a = input('请输入通道 :\n')
@@ -417,32 +422,36 @@ def dianxinfuzai():
                 canid = '0x644'
                 for i, j in zip(channels_list, ch_mA):
                     decimal_number = int(j)
-                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8) & 0xFF)
-                    hexadecimal_string2 = '{:02X}'.format(decimal_number & 0xFF)
+                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8)
+                                                          & 0xFF)
+                    hexadecimal_string2 = '{:02X}'.format(decimal_number
+                                                          & 0xFF)
                     if i == '1':
-                        candata[int(i)-1] = str(hexadecimal_string1)
+                        candata[int(i) - 1] = str(hexadecimal_string1)
                         candata[int(i)] = str(hexadecimal_string2)
                     elif i == '2':
                         candata[int(i)] = str(hexadecimal_string1)
                         candata[int(i) + 1] = str(hexadecimal_string2)
                     elif i == '3':
-                        candata[int(i)+1] = str(hexadecimal_string1)
+                        candata[int(i) + 1] = str(hexadecimal_string1)
                         candata[int(i) + 2] = str(hexadecimal_string2)
             elif channels.issubset({'4', '5', '6'}):
                 canid = '0x645'
                 for i, j in zip(channels_list, ch_mA):
                     decimal_number = int(j)
-                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8) & 0xFF)
-                    hexadecimal_string2 = '{:02X}'.format(decimal_number & 0xFF)
+                    hexadecimal_string1 = '{:02X}'.format((decimal_number >> 8)
+                                                          & 0xFF)
+                    hexadecimal_string2 = '{:02X}'.format(decimal_number
+                                                          & 0xFF)
                     if i == '4':
-                        candata[int(i)-4] = str(hexadecimal_string1)
-                        candata[int(i)-3] = str(hexadecimal_string2)
+                        candata[int(i) - 4] = str(hexadecimal_string1)
+                        candata[int(i) - 3] = str(hexadecimal_string2)
                     elif i == '5':
-                        candata[int(i)-3] = str(hexadecimal_string1)
-                        candata[int(i)-2] = str(hexadecimal_string2)
+                        candata[int(i) - 3] = str(hexadecimal_string1)
+                        candata[int(i) - 2] = str(hexadecimal_string2)
                     elif i == '6':
-                        candata[int(i)-2] = str(hexadecimal_string1)
-                        candata[int(i)-1] = str(hexadecimal_string2)
+                        candata[int(i) - 2] = str(hexadecimal_string1)
+                        candata[int(i) - 1] = str(hexadecimal_string2)
             else:
                 print("无效的通道组合或通道未在允许的范围内")  # 不支持的组合
         else:
@@ -455,8 +464,9 @@ def dianxinfuzai():
                 # 使用 hex() 函数将整数转换为十六进制字符串
                 hexadecimal_string = hex(decimal_number)
                 candata[i] = hexadecimal_string[2:]
-        print(f'CAN ID: {canid}   \n'
-              f'CAN DATA: {candata} \n')
+        print(f'CAN ID: {canid}   \n' f'CAN DATA: {candata} \n')
+
+
 def main():
     choose_card = input("1: LFIU\n"
                         "2: MFIU \n"
@@ -494,4 +504,3 @@ def main():
 
 
 main()
-

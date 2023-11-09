@@ -70,6 +70,7 @@ def Crc_CalculateCRC32(buf, init=0):
         fina = crc & 0x000000FF
     return fina
 
+
 # 00 01 00 00 00 00 00
 def crc_ver(cv):
     data = bytearray.fromhex(cv)

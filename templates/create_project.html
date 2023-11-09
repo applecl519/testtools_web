@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>创建项目</title>
     <style>
@@ -93,10 +94,9 @@
         input[type="file"] {
             display: none;
         }
-
-
     </style>
 </head>
+
 <body>
     <header>
         <h1>测试用例管理</h1>
@@ -188,19 +188,20 @@
                 },
                 body: `project_name=${projectName}`,
             })
-            .then(response => response.json())
-            .then(data => {
-                // 弹出提示消息
-                showAlert(data.message);
-                // 清空输入框
-                projectNameInput.value = '';
-                // 刷新当前页面
-                location.reload();
-            })
-            .catch(error => {
-                console.error('Error creating project:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    // 弹出提示消息
+                    showAlert(data.message);
+                    // 清空输入框
+                    projectNameInput.value = '';
+                    // 刷新当前页面
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('Error creating project:', error);
+                });
         }
     </script>
 </body>
+
 </html>

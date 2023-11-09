@@ -6,7 +6,6 @@ from time import sleep
 import os
 import subprocess
 
-
 # BASE_URL = 'http://127.0.0.1:8000'
 HEADERS = {'Content-Type': 'application/json'}
 
@@ -24,7 +23,7 @@ def read_test_cases_from_csv(csv_file):
     return test_cases
 
 
-def wirte_test_result_into_csv(csv_file,index, wd):
+def wirte_test_result_into_csv(csv_file, index, wd):
     with open(csv_file, 'r') as file:
         reader = csv.reader(file)
         data = list(reader)
@@ -37,8 +36,7 @@ def wirte_test_result_into_csv(csv_file,index, wd):
         writer.writerows(data)
 
 
-
-def csvload(BASE_URL,csv_file):
+def csvload(BASE_URL, csv_file):
     # 测试用例数据
     test_cases = read_test_cases_from_csv(csv_file)
 
@@ -66,7 +64,8 @@ def csvload(BASE_URL,csv_file):
 
     # 打印分组后的测试用例
     num = 0
-    for group_index, group_test_cases in enumerate(grouped_test_cases, start=1):
+    for group_index, group_test_cases in enumerate(grouped_test_cases,
+                                                   start=1):
         # 遍历分组列表，每个group_test_cases代表一个组
         print(f"第{group_index}条用例需要执行{len(group_test_cases)}步操作:")
         for test_case in group_test_cases:
@@ -85,7 +84,8 @@ def csvload(BASE_URL,csv_file):
             # print(csv_qianzhitiaojian.split())
             headers = HEADERS.copy()
             url = BASE_URL + csv_url
-            jsondata = json.loads(csv_jsondata) if '{' in csv_jsondata else csv_jsondata
+            jsondata = json.loads(
+                csv_jsondata) if '{' in csv_jsondata else csv_jsondata
             if csv_isrun == '是':
                 if csv_qianzhitiaojian.split():
                     for i in csv_qianzhitiaojian.split('\n'):
@@ -94,17 +94,19 @@ def csvload(BASE_URL,csv_file):
                 response = None
                 try:
                     if csv_method == 'GET':
-                        response = requests.get(url + str(jsondata), headers=headers)
+                        response = requests.get(url + str(jsondata),
+                                                headers=headers)
                     elif csv_method == 'POST':
-                        response = requests.post(url, headers=headers, json=jsondata)
+                        response = requests.post(url,
+                                                 headers=headers,
+                                                 json=jsondata)
                     # print(response.json(),response.text)
-                    wirte_test_result_into_csv(csv_file,num, response.json())
+                    wirte_test_result_into_csv(csv_file, num, response.json())
                     # 可以根据其他HTTP方法扩展
                 except Exception as e:
-                    print(f"Exception occurred during test execution: {str(e)}")
+                    print(
+                        f"Exception occurred during test execution: {str(e)}")
                     return None
                 if csv_houzhitiaojian.split():
                     for i in csv_houzhitiaojian.split():
                         eval(f"""{i}""")
-
-

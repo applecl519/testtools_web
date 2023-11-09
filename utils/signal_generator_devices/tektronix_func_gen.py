@@ -9,7 +9,6 @@ import pyvisa
 import numpy as np
 from typing import Tuple, List, Union
 
-
 _VISA_ADDRESS = "USB0::0x0699::0x0353::1731975::INSTR"
 
 
@@ -124,11 +123,10 @@ class FuncGen:
           keys "50ohm" and "highZ" will have subdictionaries with keys
           "min" and "max"
     """
-
     def __init__(
         self,
         visa_address: str,
-        impedance: Tuple[str, str] = ("highZ",) * 2,
+        impedance: Tuple[str, str] = ("highZ", ) * 2,
         timeout: int = 1000,
         verify_param_set: bool = False,
         override_compatibility: str = "",
@@ -181,10 +179,8 @@ class FuncGen:
             self._id = self.query("*IDN?")
         self._maker, self._model, self._serial = self._id.split(",")[:3]
         if self.verbose:
-            print(
-                f"Connected to {self._maker} model {self._model}, "
-                f"serial {self._serial}"
-            )
+            print(f"Connected to {self._maker} model {self._model}, "
+                  f"serial {self._serial}")
 
     def close(self):
         """Close the connection to the instrument"""
@@ -211,58 +207,118 @@ class FuncGen:
             If the connected model is not necessarily compatible with this
             package, slimits are not known.
         """
-        if np.any(["AFG1022" in a for a in [self._model, self._override_compat]]):
+        if np.any(
+            ["AFG1022" in a for a in [self._model, self._override_compat]]):
             self.instrument_limits = {
-                "frequency lims": ({"min": 1e-6, "max": 25e6}, "Hz"),
+                "frequency lims": ({
+                    "min": 1e-6,
+                    "max": 25e6
+                }, "Hz"),
                 "voltage lims": (
-                    {"50ohm": {"min": -5, "max": 5}, "highZ": {"min": -10, "max": 10}},
+                    {
+                        "50ohm": {
+                            "min": -5,
+                            "max": 5
+                        },
+                        "highZ": {
+                            "min": -10,
+                            "max": 10
+                        }
+                    },
                     "V",
                 ),
                 "amplitude lims": (
                     {
-                        "50ohm": {"min": 0.001, "max": 10},
-                        "highZ": {"min": 0.002, "max": 20},
+                        "50ohm": {
+                            "min": 0.001,
+                            "max": 10
+                        },
+                        "highZ": {
+                            "min": 0.002,
+                            "max": 20
+                        },
                     },
                     "Vpp",
                 ),
             }
-            self._arbitrary_waveform_length = [2, 8192]  # min length, max length
+            self._arbitrary_waveform_length = [2,
+                                               8192]  # min length, max length
             self._arbitrary_waveform_resolution = 16383  # 14 bit
             self._max_waveform_memory_user_locations = 255
-        elif np.any(["AFG1062" in a for a in [self._model, self._override_compat]]):
+        elif np.any(
+            ["AFG1062" in a for a in [self._model, self._override_compat]]):
             self.instrument_limits = {
-                "frequency lims": ({"min": 1e-6, "max": 60e6}, "Hz"),
+                "frequency lims": ({
+                    "min": 1e-6,
+                    "max": 60e6
+                }, "Hz"),
                 "voltage lims": (
-                    {"50ohm": {"min": -5, "max": 5}, "highZ": {"min": -10, "max": 10}},
+                    {
+                        "50ohm": {
+                            "min": -5,
+                            "max": 5
+                        },
+                        "highZ": {
+                            "min": -10,
+                            "max": 10
+                        }
+                    },
                     "V",
                 ),
                 "amplitude lims": (
                     {
-                        "50ohm": {"min": 0.001, "max": 10},
-                        "highZ": {"min": 0.002, "max": 20},
+                        "50ohm": {
+                            "min": 0.001,
+                            "max": 10
+                        },
+                        "highZ": {
+                            "min": 0.002,
+                            "max": 20
+                        },
                     },
                     "Vpp",
                 ),
             }
-            self._arbitrary_waveform_length = [2, 1e6]  # min length, max length
+            self._arbitrary_waveform_length = [2,
+                                               1e6]  # min length, max length
             self._arbitrary_waveform_resolution = 16383  # 14 bit
             self._max_waveform_memory_user_locations = 31
-        elif np.any(["AFG3022" in a for a in [self._model, self._override_compat]]):
+        elif np.any(
+            ["AFG3022" in a for a in [self._model, self._override_compat]]):
             self.instrument_limits = {
-                "frequency lims": ({"min": 1e-6, "max": 25e6}, "Hz"),
+                "frequency lims": ({
+                    "min": 1e-6,
+                    "max": 25e6
+                }, "Hz"),
                 "voltage lims": (
-                    {"50ohm": {"min": -5, "max": 5}, "highZ": {"min": -10, "max": 10}},
+                    {
+                        "50ohm": {
+                            "min": -5,
+                            "max": 5
+                        },
+                        "highZ": {
+                            "min": -10,
+                            "max": 10
+                        }
+                    },
                     "V",
                 ),
                 "amplitude lims": (
                     {
-                        "50ohm": {"min": 0.01, "max": 10},
-                        "highZ": {"min": 0.02, "max": 20},
+                        "50ohm": {
+                            "min": 0.01,
+                            "max": 10
+                        },
+                        "highZ": {
+                            "min": 0.02,
+                            "max": 20
+                        },
                     },
                     "Vpp",
                 ),
             }
-            self._arbitrary_waveform_length = [2, 65536]  # min length, max length
+            self._arbitrary_waveform_length = [2,
+                                               65536]  # min length, max length
             self._arbitrary_waveform_resolution = 16383  # 14 bit
             self._max_waveform_memory_user_locations = 4
         else:
@@ -272,8 +328,7 @@ class FuncGen:
                 "  To initiate and use the module as any of these, call the\n"
                 "  class with for instance `override_compatibility='AFG1022'`\n"
                 "  Note that this might lead to unexpected behaviour\n"
-                "  for custom waveforms and 'MIN'/'MAX' keywords."
-            )
+                "  for custom waveforms and 'MIN'/'MAX' keywords.")
             raise NotCompatibleError(msg)
 
     def write(self, command: str, custom_err_message: str = None) -> int:
@@ -301,7 +356,8 @@ class FuncGen:
             `pyvisa.constants.StatusCode.success`
         """
         num_bytes = self._inst.write(command)
-        self._check_pyvisa_status(command, custom_err_message=custom_err_message)
+        self._check_pyvisa_status(command,
+                                  custom_err_message=custom_err_message)
         return num_bytes
 
     def query(self, command: str, custom_err_message: str = None) -> str:
@@ -329,10 +385,13 @@ class FuncGen:
             `pyvisa.constants.StatusCode.success`
         """
         response = self._inst.query(command).strip()
-        self._check_pyvisa_status(command, custom_err_message=custom_err_message)
+        self._check_pyvisa_status(command,
+                                  custom_err_message=custom_err_message)
         return response
 
-    def _check_pyvisa_status(self, command: str, custom_err_message: str = None):
+    def _check_pyvisa_status(self,
+                             command: str,
+                             custom_err_message: str = None):
         """Check the last status code of PyVISA
 
         Parameters
@@ -354,15 +413,12 @@ class FuncGen:
         status = self._inst.last_status
         if not status == pyvisa.constants.StatusCode.success:
             if custom_err_message is not None:
-                msg = (
-                    f"Could not {custom_err_message}: pyvisa returned "
-                    f"StatusCode {status} ({str(status)})"
-                )
+                msg = (f"Could not {custom_err_message}: pyvisa returned "
+                       f"StatusCode {status} ({str(status)})")
                 raise RuntimeError(msg)
             msg = (
                 f"Writing/querying command {command} failed: pyvisa returned "
-                f"StatusCode {status} ({str(status)})"
-            )
+                f"StatusCode {status} ({str(status)})")
             raise RuntimeError(msg)
         return status
 
@@ -404,17 +460,26 @@ class FuncGen:
             for ch_settings in settings
         ]
         padding = [key_padding] + ch_paddings
-        print(f"\nCurrent settings for {self._maker} {self._model} {self._serial}\n")
+        print(
+            f"\nCurrent settings for {self._maker} {self._model} {self._serial}\n"
+        )
         row_format = "{:>{padd[0]}s} {:{padd[1]}s} {:{padd[2]}s} {}"
-        table_header = row_format.format("Setting", "Ch1", "Ch2", "Unit", padd=padding)
+        table_header = row_format.format("Setting",
+                                         "Ch1",
+                                         "Ch2",
+                                         "Unit",
+                                         padd=padding)
         print(table_header)
         print("=" * len(table_header))
-        for (ch1key, (ch1val, unit)), (_, (ch2val, _)) in zip(
-            settings[0].items(), settings[1].items()
-        ):
+        for (ch1key, (ch1val, unit)), (_, (ch2val,
+                                           _)) in zip(settings[0].items(),
+                                                      settings[1].items()):
             print(
-                row_format.format(ch1key, str(ch1val), str(ch2val), unit, padd=padding)
-            )
+                row_format.format(ch1key,
+                                  str(ch1val),
+                                  str(ch2val),
+                                  unit,
+                                  padd=padding))
 
     def set_settings(self, settings: List[dict]):
         """Set the settings of both channels with settings dictionaries
@@ -469,14 +534,12 @@ class FuncGen:
             if state.lower() == "off" and not self.get_frequency_lock():
                 print(
                     f"(!) {self._model}: Tried to disable frequency lock, but "
-                    f"frequency lock was not enabled"
-                )
+                    f"frequency lock was not enabled")
                 return
             if state.lower() == "on" and self.get_frequency_lock():
                 print(
                     f"(!) {self._model}: Tried to enable frequency lock, but "
-                    f"frequency lock was already enabled"
-                )
+                    f"frequency lock was already enabled")
                 return
         # (Sufficient to disable for only one of the channels)
         cmd = f"SOURCE{use_channel}:FREQuency:CONCurrent {state}"
@@ -533,8 +596,7 @@ class FuncGen:
             msg = (
                 f"Waveform length from native length command (DATA:POINts?) "
                 f"and the processed binary values do not match, "
-                f"{waveform_length} and {len(waveform)} respectively"
-            )
+                f"{waveform_length} and {len(waveform)} respectively")
             assert len(waveform) == waveform_length, msg
             return waveform
         print(f"Waveform USER{memory_num} is not in use")
@@ -581,8 +643,7 @@ class FuncGen:
         if not 0 <= memory_num <= self._max_waveform_memory_user_locations:
             raise ValueError(
                 f"The memory location {memory_num} is not a valid "
-                "memory location for this model"
-            )
+                "memory location for this model")
         # Check if waveform data is suitable
         if print_progress:
             print("Check if waveform data is suitable..", end=" ")
@@ -598,9 +659,10 @@ class FuncGen:
             print("ok")
             print("Transfer waveform to function generator..", end=" ")
         # Transfer waveform
-        self._inst.write_binary_values(
-            "DATA:DATA EMEMory,", waveform, datatype="H", is_big_endian=True
-        )
+        self._inst.write_binary_values("DATA:DATA EMEMory,",
+                                       waveform,
+                                       datatype="H",
+                                       is_big_endian=True)
         # Check for errors and check lengths are matching
         transfer_error = self.get_error()
         emem_wf_length = self.query("DATA:POINts? EMEMory")
@@ -608,8 +670,7 @@ class FuncGen:
             msg = (
                 f"Waveform in temporary EMEMory has a length of {emem_wf_length}"
                 f", not of the same length as the waveform ({len(waveform)})."
-                f"\nError from the instrument: {transfer_error}"
-            )
+                f"\nError from the instrument: {transfer_error}")
             raise RuntimeError(msg)
         if print_progress:
             print("ok")
@@ -629,8 +690,7 @@ class FuncGen:
                 )
                 if not verif[0]:
                     raise RuntimeError(
-                        f"USER{memory_num} does not contain the waveform"
-                    )
+                        f"USER{memory_num} does not contain the waveform")
             else:
                 raise RuntimeError(f"USER{memory_num} is empty")
         return waveform
@@ -700,11 +760,9 @@ class FuncGen:
         len_inst_wav, len_wav = len(instrument_waveform), len(waveform)
         if not len_inst_wav == len_wav:
             if print_result:
-                print(
-                    f"The waveform in USER{memory_num} and the compared "
-                    f"waveform are not of same length (instrument "
-                    f"{len_inst_wav} vs {len_wav})"
-                )
+                print(f"The waveform in USER{memory_num} and the compared "
+                      f"waveform are not of same length (instrument "
+                      f"{len_inst_wav} vs {len_wav})")
             return False, instrument_waveform, None
         # Compare each element
         not_equal = []
@@ -714,16 +772,12 @@ class FuncGen:
         # Return depending of whether list is empty or not
         if not not_equal:  # if list is empty
             if print_result:
-                print(
-                    f"The waveform in USER{memory_num} and the compared "
-                    f"waveform are equal"
-                )
+                print(f"The waveform in USER{memory_num} and the compared "
+                      f"waveform are equal")
             return True, instrument_waveform, not_equal
         if print_result:
-            print(
-                f"The waveform in USER{memory_num} and the compared "
-                f"waveform are NOT equal"
-            )
+            print(f"The waveform in USER{memory_num} and the compared "
+                  f"waveform are NOT equal")
         return False, instrument_waveform, not_equal
 
     def _check_arb_waveform_length(self, waveform: np.ndarray):
@@ -740,13 +794,10 @@ class FuncGen:
             If the waveform is not within the permitted length
         """
         if (len(waveform) < self._arbitrary_waveform_length[0]) or (
-            len(waveform) > self._arbitrary_waveform_length[1]
-        ):
-            msg = (
-                "The waveform is of length {}, which is not within the "
-                "acceptable length {} < len < {}"
-                "".format(len(waveform), *self._arbitrary_waveform_length)
-            )
+                len(waveform) > self._arbitrary_waveform_length[1]):
+            msg = ("The waveform is of length {}, which is not within the "
+                   "acceptable length {} < len < {}"
+                   "".format(len(waveform), *self._arbitrary_waveform_length))
             raise ValueError(msg)
 
     def _check_arb_waveform_type_and_range(self, waveform: np.ndarray):
@@ -766,16 +817,13 @@ class FuncGen:
         """
         for value in waveform:
             if not isinstance(value, (int, np.uint16, np.int32)):
-                raise ValueError(
-                    "The waveform contains values that are not"
-                    "int, np.uint16 or np.int32"
-                )
+                raise ValueError("The waveform contains values that are not"
+                                 "int, np.uint16 or np.int32")
             if (value < 0) or (value > self._arbitrary_waveform_resolution):
                 raise ValueError(
                     f"The waveform contains values out of range "
                     f"({value} is not within the resolution "
-                    f"[0, {self._arbitrary_waveform_resolution}])"
-                )
+                    f"[0, {self._arbitrary_waveform_resolution}])")
 
 
 ## ~~~~~~~~~~~~~~~~~~~~~~~ CHANNEL CLASS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
@@ -806,7 +854,6 @@ class FuncGenChannel:
 
     _state_to_str = {"1": "ON", "0": "OFF", 1: "ON", 0: "OFF"}
     """Dictionary for converting output states to "ON" and "OFF" """
-
     def __init__(self, fgen: FuncGen, channel: int, impedance: str):
         self._fgen = fgen
         self._channel = channel
@@ -839,10 +886,13 @@ class FuncGenChannel:
     def set_stricter_limits(self):
         """Set limits for the voltage and frequency limits of the channel output
         through a series of prompts"""
-        print(f"Set stricter voltage and frequency limits for channel {self._channel}")
+        print(
+            f"Set stricter voltage and frequency limits for channel {self._channel}"
+        )
         print("Use enter only to leave a limit unchanged.")
         # Go through the different limits in the instrument_limits dict
-        for limit_type, (inst_limit_dict, unit) in self._fgen.instrument_limits.items():
+        for limit_type, (inst_limit_dict,
+                         unit) in self._fgen.instrument_limits.items():
             use_impedance = self._impedance_dependent_limit(limit_type)
             print(f"Set {limit_type} in {unit}", end=" ")
             if use_impedance:
@@ -853,7 +903,8 @@ class FuncGenChannel:
             # Go through the min and max for the limit type
             for key, inst_value in inst_limit_dict.items():
                 # prompt for new value
-                new_value = input(f"  {key} (instrument limit {inst_value}{unit}): ")
+                new_value = input(
+                    f"  {key} (instrument limit {inst_value}{unit}): ")
                 if new_value == "":
                     # Do not change if empty
                     print("\tLimit not changed")
@@ -863,15 +914,16 @@ class FuncGenChannel:
                     except ValueError:
                         print(
                             f"\tLimit unchanged: Could not convert '{new_value}' "
-                            f"to float"
-                        )
+                            f"to float")
                         continue  # to next item in dict
                     # Set the new limit
                     self.set_limit(limit_type, key, new_value, verbose=True)
 
-    def set_limit(
-        self, limit_type: str, bound: str, new_value: float, verbose: bool = False
-    ) -> bool:
+    def set_limit(self,
+                  limit_type: str,
+                  bound: str,
+                  new_value: float,
+                  verbose: bool = False) -> bool:
         """Set a limit if the new value is within the instrument limits and are
         self consistent (max larger than min)
 
@@ -915,7 +967,8 @@ class FuncGenChannel:
             # limit type. Beware that the shorthand cannot be used, as this
             # only changes the shorthand not the dictionary itself
             if use_impedance:
-                self.channel_limits[limit_type][0][self.impedance][bound] = new_value
+                self.channel_limits[limit_type][0][
+                    self.impedance][bound] = new_value
             else:
                 self.channel_limits[limit_type][0][bound] = new_value
             if verbose:
@@ -926,13 +979,11 @@ class FuncGenChannel:
                 reason = "larger" if bound == "max" else "smaller"
                 print(
                     f"\tNew limit NOT set: {new_value}{unit} is {reason} than "
-                    f"the instrument limit ({inst_value}{unit})"
-                )
+                    f"the instrument limit ({inst_value}{unit})")
             else:
                 print(
                     f"\tNew limit NOT set: {new_value}{unit} is smaller than the "
-                    f"current set minimum ({current_min}{unit})"
-                )
+                    f"current set minimum ({current_min}{unit})")
         return False
 
     # Get currently used parameters from function generator
@@ -959,15 +1010,19 @@ class FuncGenChannel:
     def get_duty(self):
         return self._fgen.query(f"{self._source}PULSe:DCYCle?")
 
-    def set_duty(self,dutydata):
+    def set_duty(self, dutydata):
         self._fgen.write(
             f"{self._source}PULSe:DCYCle {float(dutydata)}",
             custom_err_message=f"set duty {float(dutydata)}",
         )
+
     # Get limits set in the channel class
     def get_frequency_lims(self) -> List[float]:
         """Returns list of min and max frequency limits"""
-        return [self.channel_limits["frequency lims"][0][key] for key in ["min", "max"]]
+        return [
+            self.channel_limits["frequency lims"][0][key]
+            for key in ["min", "max"]
+        ]
 
     def get_voltage_lims(self) -> List[float]:
         """Returns list of min and max voltage limits for the current impedance"""
@@ -1010,7 +1065,10 @@ class FuncGenChannel:
         print("\nCurrent settings for channel {}".format(self._channel))
         print("==============================")
         for key, (val, unit) in settings.items():
-            print("{:>{num_char}s} {} {}".format(key, val, unit, num_char=longest_key))
+            print("{:>{num_char}s} {} {}".format(key,
+                                                 val,
+                                                 unit,
+                                                 num_char=longest_key))
 
     def set_settings(self, settings: dict):
         """Set the settings of the channel with a settings dictionary. Will
@@ -1050,17 +1108,15 @@ class FuncGenChannel:
             get function
         """
         err_msg = f"turn channel {self._channel} to state {state}"
-        self._fgen.write(
-            f"OUTPut{self._channel}:STATe {state}", custom_err_message=err_msg
-        )
+        self._fgen.write(f"OUTPut{self._channel}:STATe {state}",
+                         custom_err_message=err_msg)
         if self._fgen.verify_param_set:
             actual_state = self.get_output_state()
             if not actual_state == state:
                 msg = (
                     f"Channel {self._channel} was not turned {state}, it is "
                     f"{self._state_to_str[actual_state]}.\n"
-                    f"Error from the instrument: {self._fgen.get_error()}"
-                )
+                    f"Error from the instrument: {self._fgen.get_error()}")
                 raise NotSetError(msg)
 
     def get_output(self) -> int:
@@ -1103,8 +1159,7 @@ class FuncGenChannel:
                     f"it is {actual_shape}. Check that the function name is "
                     f"correctly spelt. Look up `set_function.__doc__` to see "
                     f"available shapes.\n Error from the instrument: "
-                    f"{self._fgen.get_error()}"
-                )
+                    f"{self._fgen.get_error()}")
                 raise NotSetError(msg)
 
     def set_amplitude(self, amplitude: float):
@@ -1127,9 +1182,8 @@ class FuncGenChannel:
         if str(amplitude).lower() in ["min", "max"]:
             unit = ""  # no unit for MIN/MAX
             # Look up what the limit is for this keyword
-            amplitude = self.channel_limits["amplitude lims"][0][self.impedance][
-                str(amplitude).lower()
-            ]
+            amplitude = self.channel_limits["amplitude lims"][0][
+                self.impedance][str(amplitude).lower()]
         else:
             unit = "Vpp"
             # Check if the given amplitude is within the current limits
@@ -1138,21 +1192,17 @@ class FuncGenChannel:
                 msg = (
                     f"Could not set the amplitude {amplitude}{unit} as it "
                     f"is not within the amplitude limits set for the instrument "
-                    f"[{min_ampl}, {max_ampl}]{unit}"
-                )
+                    f"[{min_ampl}, {max_ampl}]{unit}")
                 raise NotSetError(msg)
         # Check that the new amplitude will not violate voltage limits
         min_volt, max_volt = self.get_voltage_lims()
         current_offset = self.get_offset()
-        if (
-            amplitude / 2 - current_offset < min_volt
-            or amplitude / 2 + current_offset > max_volt
-        ):
+        if (amplitude / 2 - current_offset < min_volt
+                or amplitude / 2 + current_offset > max_volt):
             msg = (
                 f"Could not set the amplitude {amplitude}{unit} as the amplitude "
                 f"combined with the offset ({current_offset}V) will be outside the "
-                f"absolute voltage limits [{min_volt}, {max_volt}]{unit}"
-            )
+                f"absolute voltage limits [{min_volt}, {max_volt}]{unit}")
             raise NotSetError(msg)
         # Set the amplitude
         cmd = f"{self._source}VOLTage:LEVel {amplitude}{unit}"
@@ -1173,8 +1223,7 @@ class FuncGenChannel:
                     f"{self._channel}, it is {actual_amplitude}Vpp. Check that "
                     f" the number is within the possible range and in the "
                     f"correct format.\nError from the instrument: "
-                    f"{self._fgen.get_error()}"
-                )
+                    f"{self._fgen.get_error()}")
                 raise NotSetError(msg)
 
     def set_offset(self, offset: float, unit: str = "V"):
@@ -1197,15 +1246,12 @@ class FuncGenChannel:
         min_volt, max_volt = self.get_voltage_lims()
         current_amplitude = self.get_amplitude()
         offset = _SI_prefix_to_factor(unit) * offset
-        if (
-            current_amplitude / 2 - offset < min_volt
-            or current_amplitude / 2 + offset > max_volt
-        ):
+        if (current_amplitude / 2 - offset < min_volt
+                or current_amplitude / 2 + offset > max_volt):
             msg = (
                 f"Could not set the offset {offset}V as the offset combined "
                 f"with the amplitude ({current_amplitude}V) will be outside "
-                f"the absolute voltage limits [{min_volt}, {max_volt}]V"
-            )
+                f"the absolute voltage limits [{min_volt}, {max_volt}]V")
             raise NotSetError(msg)
         # Set the offset
         cmd = f"{self._source}VOLTage:LEVel:OFFSet {offset}{unit}"
@@ -1250,11 +1296,9 @@ class FuncGenChannel:
             min_freq, max_freq = self.get_frequency_lims()
             freq = _SI_prefix_to_factor(unit) * freq
             if freq < min_freq or freq > max_freq:
-                msg = (
-                    f"Could not set the frequency {freq}Hz as it is not "
-                    f"within the frequency limits set for the instrument "
-                    f"[{min_freq}, {max_freq}]Hz"
-                )
+                msg = (f"Could not set the frequency {freq}Hz as it is not "
+                       f"within the frequency limits set for the instrument "
+                       f"[{min_freq}, {max_freq}]Hz")
                 raise NotSetError(msg)
         # Set the frequency
         self._fgen.write(
@@ -1275,8 +1319,7 @@ class FuncGenChannel:
                     f"Frequency {freq}{unit} was not set on channel {self._channel}"
                     f", it is {actual_freq}Hz. Check that the number is within "
                     f"the possible range and in the correct format.\nError "
-                    f"from the instrument: {self._fgen.get_error()}"
-                )
+                    f"from the instrument: {self._fgen.get_error()}")
                 raise NotSetError(msg)
 
 
