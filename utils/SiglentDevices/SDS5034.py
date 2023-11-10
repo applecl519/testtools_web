@@ -684,6 +684,14 @@ class SDS5034(SiglentBase):
     def get_measurement_item_value(self, n):
         return self.query(f'MEAS:ADV:P{n}:VAL?')
 
+    #截图
+    def get_screenshot(self, na):
+        try:
+            s = self.query(f'SAVE:IMAGe "U-disk0/SIGLENT/{na}.png",PNG,ON')
+            # return self.query(f'SAVE:IMAGe "U-disk0/SIGLENT/{na}.png",PNG,ON')
+        except Exception as e:
+            return 0
+
     # 测量
     def set_measurement_item(self, lst_measurement=None):
         var = {
@@ -1145,12 +1153,6 @@ class SDS5034(SiglentBase):
 
     def getdecode(self):
         return self.query('DEC:BUS1:PROT?')
-
-    def get_screenshot(self, photoname):
-        try:
-            self.query(f'SAVE:IMAGe "U-disk0/SIGLENT/{photoname}.png",PNG,ON')
-        except Exception as e:
-            pass
 
     # def draw_wave(self, ch, ax=None, adjust_ylim=True, **plotargs):
     #     """Draw waveform for single channel, as shown on scope screen

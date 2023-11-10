@@ -40,7 +40,9 @@ def api_get_time_scale():
 
 @oscilloscope_bp.route('/set_time_scale', methods=['POST'])
 def api_set_time_scale():
-    scale = float(request.form['scale'])
+    data = request.json
+    scale = float(data['scale'])
+    # scale = float(request.form['scale'])
     result = handler.set_time_scale(scale)
     return jsonify(result=result)
 
@@ -118,3 +120,14 @@ def get_measurement():
     result = format(float(temp_result), ".8f")
     print(result)
     return jsonify(result=result)
+
+
+@oscilloscope_bp.route('/setscreenshot', methods=['POST'])
+def set_screenshot():
+    try:
+        data = request.json
+        phname = data['name']
+        result = handler.get_screenshot(na=phname)
+        return jsonify(result='sc')
+    except Exception as e:
+        pass

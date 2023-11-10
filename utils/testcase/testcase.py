@@ -8,6 +8,7 @@ import subprocess
 
 # BASE_URL = 'http://127.0.0.1:8000'
 HEADERS = {'Content-Type': 'application/json'}
+# HEADERS = {'Content-type': 'multipart/form-data'}
 
 
 def read_test_cases_from_csv(csv_file):
@@ -78,7 +79,7 @@ def csvload(BASE_URL, csv_file):
             csv_method = test_case['method']
             csv_jsondata = test_case['data']
             csv_isrun = test_case['是否运行']
-            print(num)
+            print(num, csv_isrun)
             csv_houzhitiaojian = test_case['后置条件']
             csv_result = test_case['返回结果']
             # print(csv_qianzhitiaojian.split())
@@ -110,3 +111,5 @@ def csvload(BASE_URL, csv_file):
                 if csv_houzhitiaojian.split():
                     for i in csv_houzhitiaojian.split():
                         eval(f"""{i}""")
+            else:
+                pass

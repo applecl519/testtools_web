@@ -345,11 +345,12 @@
         // Function to call the second API
         function setTimeScale() {
             const scale = document.getElementById('scale').value;
+            const scaledict = { scale: scale }
             fetch('/oscilloscope/set_time_scale', {
                 method: 'POST',
-                body: new URLSearchParams({ scale: scale }),
+                body: JSON.stringify(scaledict),
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }
             })
                 .then(response => response.json())

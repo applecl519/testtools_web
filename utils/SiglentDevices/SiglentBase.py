@@ -6,7 +6,10 @@
 """
 
 import pyvisa
+
 rm = pyvisa.ResourceManager()
+
+
 class SiglentBase(object):
     """Control siglent digital device and send messages
 
