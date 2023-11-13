@@ -236,7 +236,7 @@ def download_exe_calculator():
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 # 允许上传的文件类型
-ALLOWED_EXTENSIONS = {'csv'}
+ALLOWED_EXTENSIONS = {'csv', 'exp'}
 
 
 @app.route('/create_project', methods=['POST'])

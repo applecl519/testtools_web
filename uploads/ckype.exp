@@ -1,0 +1,44 @@
+#!/usr/bin/expect
+
+set timeout -1
+spawn ./kype1200_test_V1.0 ecat1
+
+
+set Anegt1 [lindex $argv 0]
+set Speedt1 [lindex $argv 1]
+set Modet1 [lindex $argv 2]
+set Anegx1 [lindex $argv 3]
+set Speedx1 [lindex $argv 4]
+set Modex1 [lindex $argv 5]
+
+set Anegt2 [lindex $argv 6]
+set Speedt2 [lindex $argv 7]
+set Modet2 [lindex $argv 8]
+set Anegx2 [lindex $argv 9]
+set Speedx2 [lindex $argv 10]
+set Modex2 [lindex $argv 11]
+
+
+
+
+expect "f:   Soem Firmware Update" {send "t\r"}
+expect "card_pulltime default : 100" { send "1000\r" }
+expect "please input slave_n:" {send "1\r"}
+expect "p:   reset" {send "c\r"}
+expect "such as: 1" {send "1\r"}
+expect "Mode : 0-Master 1-Slave" {send "$Anegt1 $Speedt1 $Modet1\r"}
+expect "Mode : 0-FULL Duplex 1-HALF Duplex" {send "$Anegx1 $Speedx1 $Modex1\r"}
+expect "p:   reset" {send "c\r"}
+expect "such as: 1" {send "2\r"}
+expect "Mode : 0-Master 1-Slave" {send "$Anegt2 $Speedt2 $Modet2\r"}
+expect "Mode : 0-FULL Duplex 1-HALF Duplex" {send "$Anegx2 $Speedx2 $Modex2\r"}
+expect "p:   reset" {send "r\r"}
+sleep 3
+expect "such as: 300000 1000" {send "300000 3\r"}
+expect "cycle complete" {send ""}
+
+
+
+exit
+
+
