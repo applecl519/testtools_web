@@ -104,7 +104,9 @@ def dianchifuzai_setCurrent():
 @dianchifuzai_bp.route('/setResistance', methods=['POST'])
 def dianchifuzai_setResistance():
     try:
-        dianchifuzai_R = int(request.form['resistance'])
+        data = request.json
+        dianchifuzai_R = int(data['resistance'])
+        # dianchifuzai_R = int(request.form['resistance'])
         commandvs = 'FUNC RESistance'
         commandas = f'RES {dianchifuzai_R}'
         responsev = instrument.write(commandvs)

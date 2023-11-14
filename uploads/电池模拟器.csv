@@ -1,0 +1,52 @@
+编号,测试用例名称,前置条件,测试步骤,url,method,data,是否运行,后置条件,期望结果（future）,返回结果
+1,一通道cv模式5v,,3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 5000000'"",
+    ""mastr"": ""ON/CV""
+}",是,,,{'result': ''}
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '4.3592 VDC\r\n'}
+2,一通道cv模式3v,,3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 3000000'"",
+    ""mastr"": ""ON/CV""
+}",是,,,{'result': 'ch[1]   152587.890625   2985583.990812     33.473343    ON/CV\nch[1]   152483.582497   2985578.030348     33.473618    ON/CV\nch[1]   152483.582497   2985607.832670     33.472122    ON/CV'}
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '2.99 VDC\r\n'}
+3,全通道cv模式4v,,3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 0 4000000'"",
+    ""mastr"": ""ON/CV""
+}",是,,,{'result': 'ch[1]   203467.905521   3983639.925718     33.478355    ON/CV\nch[2]   1255.422831   3994520.008564     34.763062    ON/CV\nch[3]   12807.548046   3998829.424381     32.735321    ON/CV\nch[4]   2697.110176   3989474.475384     32.350571    ON/CV\nch[5]   6966.292858   3989323.973656     33.211433    ON/CV\nch[6]     22.351742   3997022.658587     32.003822    ON/CV\nch[1]   203728.675842   3983779.251575     33.481483    ON/CV\nch[2]   1270.323992   3994517.773390     34.760292    ON/CV\nch[3]   12814.998627   3998822.718859     32.732491    ON/CV\nch[4]   2615.153790   3989497.572184     32.346367    ON/CV\nch[5]   6891.787052   3989282.250404     33.209915    ON/CV\nch[6]    100.582838   3997085.988522     32.004829    ON/CV\nch[1]   203210.860491   3983704.745770     33.479126    ON/CV\nch[2]   1192.092896   3994504.362345     34.764702    ON/CV\nch[3]   12814.998627   3998844.325542     32.733917    ON/CV\nch[4]   2633.780241   3989470.005035     32.344940    ON/CV\nch[5]   6958.842278   3989356.011152     33.203506    ON/CV\nch[6]    122.934580   3997153.788805     32.005844    ON/CV'}
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '3.9897 VDC\r\n'}
+4,一通道cc模式5v,,1.连接电子负载,/dianchifuzai/connect,GET,?visa=USB0::0x2EC7::0x8800::800837011767650010::INSTR,否,,,{'result': 'Connection Successful'}
+,,,2.设置电子负载电阻值,/dianchifuzai/setResistance,POST,"{""resistance"":20}",否,,,{'result': 'Connection Successful'}
+,,,3.开启电子负载,/dianchifuzai/power_on,GET,,否,,,{'result': 'Connection Successful'}
+,,sleep(2),3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 1 5000000'"",
+    ""mastr"": ""ON/CC""
+}",否,,,{'result': 'ch[1]   220894.813538   4353360.086679     33.472450    ON/CC\nch[1]   220723.450184   4352904.111147     33.470543    ON/CC\nch[1]   220559.537411   4352623.969316     33.470810    ON/CC'}
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,否,,,{'result': 'Connection Successful'}
+,,,5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,否,,,{'result': '4.3594 VDC\r\n'}
+5,全通道cc模式4.8v,,1.连接电子负载,/dianchifuzai/connect,GET,?visa=USB0::0x2EC7::0x8800::800837011767650010::INSTR,否,,,{'result': 'Connection Successful'}
+,,,2.设置电子负载电阻值,/dianchifuzai/setResistance,POST,"{""resistance"":20}",否,,,{'result': 'Connection Successful'}
+,,,3.开启电子负载,/dianchifuzai/power_on,GET,,否,,,{'result': 'Connection Successful'}
+,,sleep(2),3.执行exp脚本，取通道1电压值,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'expect newdcmn.exp 0 4800000'"",
+    ""mastr"": ""ON/CC""
+}",否,,,{'result': 'ch[1]   220496.207476   4352856.427431     33.466995    ON/CC\nch[1]   220913.439989   4353193.193674     33.470039    ON/CC\nch[1]   220481.306314   4352685.064077     33.468430    ON/CC'}
+,,,4.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,否,,,{'result': 'Connection Successful'}
+,,sleep(2),5.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,否,,,{'result': '4.3592 VDC\r\n'}

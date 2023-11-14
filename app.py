@@ -299,22 +299,20 @@ def test_case_upload_file():
     if file.filename == '':
         return "请选择文件"
 
-    # if project_name and file:
-    #     if allowed_file(file.filename):
-    #         project_folder = os.path.join(app.config['UPLOAD_FOLDER'], project_name)
-    #         if not os.path.exists(project_folder):
-    #             os.makedirs(project_folder)
-    #
-    #         file.save(os.path.join(project_folder, file.filename))
-
     if file and allowed_file(file.filename):
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         project_folder = os.path.join(app.config['UPLOAD_FOLDER'],
                                       project_name)
         file.save(os.path.join(project_folder, file.filename))
-        return redirect(f'/project/{project_name}')
+        if file.filename.endswith('.csv'):
+            return redirect(f'/project/{project_name}')
+        elif file.filename.endswith('.exp'):
+            os.system(f"notepad.exe {os.path.join(project_folder, file.filename)}")
+            return "文件已打开"
+        else:
+            return "只支持上传csv和exp文件"
     else:
-        return "只支持上传csv文件"
+        return "只支持上传csv和exp文件"
 
 
 @app.route('/testcase/delete_file', methods=['DELETE'])
@@ -348,8 +346,11 @@ def view_file(filename):
         table_html = data.to_html(classes='table table-bordered', index=False)
 
         return render_template('view_csv.html', table=table_html)
-
-    return "File format not supported."
+    elif file_path.endswith('.exp'):
+        os.system(f"notepad.exe {file_path}")
+        return "文件已打开"
+    else:
+        return "File format not supported."
 
 
 @app.route('/testcase/download_file')
