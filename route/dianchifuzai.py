@@ -78,7 +78,9 @@ def dianchifuzai_Screen():
 @dianchifuzai_bp.route('/setVoltage', methods=['POST'])
 def dianchifuzai_setVoltage():
     try:
-        dianchifuzai_V = int(request.form['voltage'])
+        data = request.json
+        dianchifuzai_V = int(data['voltage'])
+        # dianchifuzai_V = int(request.form['voltage'])
         commandv = 'FUNC VOLTage'  #屏幕显示电压
         commanda = f'VOLT {dianchifuzai_V}'  #屏幕显示电流
         responsev = instrument.write(commandv)
@@ -91,7 +93,9 @@ def dianchifuzai_setVoltage():
 @dianchifuzai_bp.route('/setCurrent', methods=['POST'])
 def dianchifuzai_setCurrent():
     try:
-        dianchifuzai_V = int(request.form['current'])
+        data = request.json
+        dianchifuzai_V = int(data['current'])
+        # dianchifuzai_V = int(request.form['current'])
         commandvs = 'FUNC CURRent'
         commandas = f'CURR {dianchifuzai_V}'
         responsev = instrument.write(commandvs)

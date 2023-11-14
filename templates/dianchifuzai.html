@@ -129,11 +129,12 @@
         function setVoltage() {
             // Retrieve voltage and current values from input fields
             const voltage = document.getElementById('voltage').value;
+            const voltage_dict = { voltage: voltage }
             fetch('/dianchifuzai/setVoltage', {
                 method: 'POST',
-                body: new URLSearchParams({ voltage: voltage }),
+                body: JSON.stringify(voltage_dict),
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }
             })
                 .then(response => response.json())
@@ -151,11 +152,12 @@
         function setCurrent() {
             // Retrieve voltage and current values from input fields
             const current = document.getElementById('current').value;
+            current_dict = { current: current }
             fetch('/dianchifuzai/setCurrent', {
                 method: 'POST',
-                body: new URLSearchParams({ current: current }),
+                body: JSON.stringify(current_dict),
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }
             })
                 .then(response => response.json())
