@@ -10,6 +10,7 @@ from route.oscilloscope import oscilloscope_bp
 from route.itech import itech_bp
 from route.vcardas import vcardas_bp
 from route.ethercat import ethercat_bp
+from route.relaycontrol import relaytronix_bp
 import pandas as pd
 from utils.testcase.testcase import *
 
@@ -30,6 +31,7 @@ app.register_blueprint(oscilloscope_bp, url_prefix='/oscilloscope')
 app.register_blueprint(itech_bp, url_prefix='/itech')
 app.register_blueprint(vcardas_bp, url_prefix='/vcardas')
 app.register_blueprint(ethercat_bp, url_prefix='/ethercat')
+app.register_blueprint(relaytronix_bp, url_prefix='/relay')
 
 
 @app.route('/')
