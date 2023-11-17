@@ -25,9 +25,10 @@ def getsignvalue(sigvalue):
         scientific_notation_str = sigvalue
         # 将科学计数法字符串转换为十进制数值
         decimal_value = float(scientific_notation_str)
-        return decimal_value
-    except ValueError as e:
-        return '0'
+        # 将十进制数值格式化为字符串，保留6位小数
+        return '{:.6f}'.format(decimal_value)
+    except ValueError:
+        return ValueError
 
 
 @fluke_bp.route('/query/<visas>', methods=['GET'])

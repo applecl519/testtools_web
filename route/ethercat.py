@@ -35,12 +35,13 @@ def filter_result(result, match_lines):
     lines = result.split('\n')
     match_lines = match_lines.split('&')
     filtered_lines = []
-    for line in lines:
-        for match_line in match_lines:
-            if match_line in line:
-                filtered_lines.append(line)
-                break
-    return '\n'.join(filtered_lines)
+    if match_lines:
+        for line in lines:
+            for match_line in match_lines:
+                if match_line in line:
+                    filtered_lines.append(line)
+                    break
+        return '\n'.join(filtered_lines)
 
 
 @ethercat_bp.route('/upload', methods=['POST'])

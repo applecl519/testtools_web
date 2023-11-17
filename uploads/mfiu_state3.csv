@@ -1,0 +1,497 @@
+编号,测试用例名称,前置条件,测试步骤,url,method,data,是否运行,后置条件,期望结果（future）,返回结果
+1,通道1状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 1 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道1dut端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道1ch端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.993950 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+2,通道2状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 2 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道2dut端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道2ch端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.993670 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+3,通道3状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 3 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道3dut端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.983450 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+4,通道4状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 4 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道4dut端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.980360 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+5,通道5状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 5 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道5dut端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.974810 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+6,通道6状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 6 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道6dut端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '0.000262 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+7,通道7状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 7 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道7dut端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '2.014700 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+8,通道8状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 8 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道8dut端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.995420 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+9,全通道开状态3，通道1状态,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道1dut端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道1ch端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.997720 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+10,全通道开状态3，通道2状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道2dut端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道2ch端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.995820 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+11,全通道开状态3，通道3状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道3dut端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.983640 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+12,全通道开状态3，通道4状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道4dut端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.980720 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+13,全通道开状态3，通道5状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道5dut端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.973830 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+14,全通道开状态3，通道6状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道6dut端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.979000 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+15,全通道开状态3，通道7状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道7dut端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '2.011300 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+16,全通道开状态3，通道8状态3,sleep(4),1.执行exp脚本,/ethercat/sent,POST,"{
+    ""ip"": ""192.168.10.207"",
+    ""user"": ""rtpc"",
+    ""passwd"": ""sv123"",
+    ""command"": ""echo 'sv123' | sudo -S -p '' -u root bash -c 'nohup expect mfiu.exp 0 3'"",
+    ""mastr"": ""none""
+}",是,,,{'result': ''}
+,,sleep(1),2.打开通道8dut端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.993170 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+17,通道1状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""60"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d6"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道1dut端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道1ch端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.993930 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+18,通道2状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""c"",
+    ""bit2"": ""0"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""bd"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道2dut端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道2ch端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.994130 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+19,通道3状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""1"",
+    ""bit2"": ""80"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""f7"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道3dut端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.983660 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+20,通道4状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""30"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道4dut端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.981310 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+21,通道5状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""6"",
+    ""bit3"": ""0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""8b"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道5dut端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.975400 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+22,通道6状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""c0"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""15"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道6dut端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.980810 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+23,通道7状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""18"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""12"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道7dut端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '2.014300 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+24,通道8状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""0"",
+    ""bit2"": ""0"",
+    ""bit3"": ""3"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""c9"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道8dut端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.995910 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+25,全通道开状态3，通道1状态,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道1dut端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道1ch端寄电器,/relay/connect,GET,?command='a1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.998060 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b1'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+26,全通道开状态3，通道2状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道2dut端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道2ch端寄电器,/relay/connect,GET,?command='a2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.995970 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b2'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+27,全通道开状态3，通道3状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道3dut端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.983980 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b3'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+28,全通道开状态3，通道4状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道4dut端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.980790 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b4'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+29,全通道开状态3，通道5状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道5dut端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.974150 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b5'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+30,全通道开状态3，通道6状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道6dut端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.979020 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b6'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+31,全通道开状态3，通道7状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道7dut端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '2.011600 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b7'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+32,全通道开状态3，通道8状态3,sleep(2),1.发送can消息,/vcardas/sent,POST,"{
+    ""channel"": ""3"",
+    ""can_id"": ""100"",
+    ""bit0"": ""0"",
+    ""bit1"": ""6d"",
+    ""bit2"": ""b6"",
+    ""bit3"": ""db"",
+    ""bit4"": ""0"",
+    ""bit5"": ""0"",
+    ""bit6"": ""0"",
+    ""bit7"": ""d4"",
+    ""isLoop"": false}",是,,,{'result': 'send Successful'}
+,,sleep(1),2.打开通道8dut端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),2.打开通道3ch端寄电器,/relay/connect,GET,?command='a8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}
+,,sleep(1),3.连接万用表,/fluke/connect,GET,/ASRL3::INSTR,是,,,{'result': 'Connection Successful'}
+,,sleep(2),4.取万用表的值,/fluke/query,GET,/ASRL3::INSTR,是,,,{'result': '1.993050 VDC\r\n'}
+,,sleep(1),5.关闭通道1dut端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.210',是,,,{'result': 'Connection Successful'}
+,,sleep(1),5.关闭通道1ch端寄电器,/relay/connect,GET,?command='b8'&url='192.168.90.211',是,,,{'result': 'Connection Successful'}

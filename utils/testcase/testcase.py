@@ -79,7 +79,6 @@ def csvload(BASE_URL, csv_file):
             csv_method = test_case['method']
             csv_jsondata = test_case['data']
             csv_isrun = test_case['是否运行']
-            print(num, csv_isrun)
             csv_houzhitiaojian = test_case['后置条件']
             csv_result = test_case['返回结果']
             # print(csv_qianzhitiaojian.split())
